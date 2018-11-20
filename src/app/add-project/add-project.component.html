@@ -1,0 +1,130 @@
+<div class="content" style="background-color:#003868;">
+  <img class="content" src="http://138.197.123.65/shawi/Pictures/Logo.png" alt="Ville Shawinigan" width="150" height="100" style="background-color:#dce0e8;">
+  
+  <form #addProjectForm="ngForm" style="background-color:#dce0e8;">
+    <br>
+    <h4 class="mx-3 pt-3">INFORMATION PROJET</h4>
+    <div class="mx-3 pt-3">
+      <label for="noProjet">No Projet : </label>
+      <input type="text" id="noProjet" class="form-control" placeholder="Numéro du projet" required>
+      <br>
+      <label for="titreProjet">Titre du projet : </label>
+      <input type="text" id="titreProjet" class="form-control" placeholder="Titre du projet" required>
+      <br>
+      <label for="descriptionProjet">Description du projet : </label>
+      <input type="text" id="descriptionProjet" class="form-control" placeholder="Description du projet">
+      <br>
+      <label for="indicateurGestion">Indicateur de gestion : </label>
+      <input type="text" id="indicateurGestion" class="form-control" placeholder="Indicateur de gestion du projet">
+      <br>
+      <label for="serviceResponsable">Service Responsable : </label>
+      <select class="form-control" id="serviceResponsable">
+        <option selected>Choisir un service</option>
+        <option>AME</option>
+        <option>CS</option>
+        <option>DÉ</option>
+      </select>
+      <br>
+      <label for="partenaire">Partenaire : </label>
+      <input type="text" id="partenaire" class="form-control" placeholder="Partenaire">
+      <br>
+      <label for="source">Source : </label>
+      <select class="form-control" id="source">
+        <option selected>Choisir une source</option>
+        <option>DG</option>
+        <option>Conseil</option>
+        <option>Commission</option>
+      </select>
+      <br>
+      <label for="suiviPar">Suivi par : </label>
+      <input type="text" id="suiviPar" class="form-control" placeholder="Suivi par">
+      <br>
+      <label for="prioriteService">Priorité de service : </label>
+      <input type="text" id="prioriteService" class="form-control" placeholder="Priorité de service">
+      <br>
+      <label for="dateEcheance">Date d'échéance : </label>
+      <input type="date" id="dateEcheance" class="form-control" placeholder="Date d'échéance">
+      <br>
+      <label for="dateEcheanceRevisee">Date d'échéance révisée : </label>
+      <input type="date" id="dateEcheanceRevisee" class="form-control" placeholder="Date d'échéance révisée">
+      <br>
+      <label for="prioriteStrat">Priorité Stratégique : </label>
+      <select class="form-control" id="prioriteStrat">
+        <option selected>Choisir une priorité</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+      <br>
+      <label for="shemaProj">Schéma du projet : </label>
+      <select class="form-control" id="shemaProj">
+        <option selected>Choisir un schéma</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+      <br>
+      <label for="orientationStrat">Orientation stratégique : </label>
+      <select class="form-control" id="orientationStrat">
+        <option selected>Choisir une orientation stratégique</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+      <br>
+      <label for="noPTI">No PTI : </label>
+      <input type="number" id="noPTI" class="form-control" placeholder="Numéro PTI">
+      <br>
+      <label for="noFinancement">No financement : </label>
+      <input type="number" id="noFinancement" class="form-control" placeholder="Numéro financement">
+      <br>
+      <label for="codeBudget">Code budgétaire : </label>
+      <input type="text" id="codeBudget" class="form-control" placeholder="Code budgétaire">
+      <br>
+      <br>
+
+      <h5>STATUT</h5>
+      <label for="phaseCours">Phase en cours : </label>
+      <select class="form-control" id="phaseCours">
+        <option selected>Choisir la phase en cours</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+      <br>
+      <label for="statutMoisCours">Statut du mois en cours : </label>
+      <select class="form-control" id="statutMoisCours">
+        <option selected>Choisir le statut du mois en cours</option>
+        <option>En contrôle</option>
+        <option>À débuter</option>
+        <option>Préoccupant</option>
+        <option>Retard/critique</option>
+      </select>
+      <br>
+      <label for="descriptionStatutCours">Description du statut en cours : </label>
+      <input type="text" id="descriptionStatutCours" class="form-control" placeholder="Description du statut en cours">
+      <br>
+      <label for="statutMoisPrecedent">Statut du mois précédent : </label>
+      <select class="form-control" id="statutMoisPrecedent">
+        <option selected>Choisir le statut du mois précédent</option>
+        <option>En contrôle</option>
+        <option>À débuter</option>
+        <option>Préoccupant</option>
+        <option>Retard/critique</option>
+      </select>
+      <br>
+      <label for="descriptionStatutPrecedent">Description du statut précédent : </label>
+      <input type="text" id="descriptionStatutPrecedent" class="form-control" placeholder="Description du statut précédent">
+      <br>
+      <div class="container text-center mb-4">
+        <button type="submit" class="btn btn-primary mr-3"[routerLink]="['/']">Ajouter</button>
+        <button type="button" class="btn btn-primary mr-3" [routerLink]="['/']">Annuler</button>
+      </div>
+      <br>
+    </div>
+  </form>
+</div>
