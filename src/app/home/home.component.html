@@ -1,4 +1,5 @@
 <!-- Login -->
+<!-- Créer un component "login" à la place -->
 <div class="container text-center col-2 mb-5 mt-5">
   <h3>Connexion</h3>
   <br>
@@ -6,7 +7,7 @@
     <input class="form-control mb-2" type="text" id="username" placeholder="Username">
     <input class="form-control" type="password" id="password" placeholder="Password">
     <br>
-    <input type="submit" class="btn btn-default">
+    <input type="submit" class="btn btn-default" value="Connexion">
   </form>
 </div>
 
@@ -15,16 +16,17 @@
 <br>
 
 
-<!-- rendre visible lorsque l'utilisateur c'est connecté -->
+<!-- Sélection d'un projet -->
 <div class="container text-center mb-5 mt-5">
   <h1>Shawinigan</h1>
   <p>Gestion de projets</p>
   <br>
   <select class="form-control">
     <option selected>Choisir un projet</option>
-    <option *ngFor="let projet of projets">{{ projet.no_projet }} - {{  projet.desc_projet }}</option>
+    <option *ngFor="let projet of projets"> {{ projet.no_projet }} - {{  projet.desc_projet }} </option>
   </select>
-  <br><br>
+  <br>
+  <br>
   <button class="btn btn-primary mr-2" [routerLink]="['/add']">AJOUTER UN PROJET</button>
   <button class="btn btn-primary mr-2">MODIFIER CE PROJET</button>
   <button class="btn btn-primary mr-2">SUPPRIMER CE PROJET</button>
