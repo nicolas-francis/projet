@@ -14,7 +14,7 @@ app.use(cors(corsOptions))
 const db = require('./src/app/config/db.config.js');
 
 //A ENLEVER PLUS TARD SEULEMENT POUR TEST *****
-// force: true will drop the table if it already exists
+//force: true will drop the table if it already exists
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync with { force: true }');
   initial();
@@ -22,9 +22,8 @@ db.sequelize.sync({force: true}).then(() => {
  
 require('./src/app/route/projet.route.js')(app);
  
-// Create a Server
+//Create a Server
 var server = app.listen(8080, function () {
- 
   let host = server.address().address
   let port = server.address().port
  
@@ -62,7 +61,7 @@ function initial(){
   ]
  
   //A ENLEVER PLUS TARD SEULEMENT POUR TEST *****
-  // Init data -> save to MySQL
+  //Init data -> save to PostgreSQL
   const Projet = db.projets;
   for (let i = 0; i < projets.length; i++) { 
     Projet.create(projets[i]);  
