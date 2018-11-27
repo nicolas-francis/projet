@@ -9,3 +9,14 @@
       <input type="submit" class="btn btn-default" value="Connexion" [routerLink]="['/home']">
     </form>
 </div>
+
+<br>
+<hr>
+<br>
+
+<div>
+  <select class="form-control">
+    <option selected>Choisir un user</option>
+    <option *ngFor="let user of users"> {{ user.utilisateur }} - {{  user.mot_de_passe }} </option>
+  </select>
+</div>

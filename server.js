@@ -14,6 +14,7 @@ app.use(cors(corsOptions))
 const db = require('./src/app/config/db.config.js');
  
 require('./src/app/route/projet.route.js')(app);
+require('./src/app/route/user.route.js')(app);
  
 //Create a Server
 var server = app.listen(8080, function () {
