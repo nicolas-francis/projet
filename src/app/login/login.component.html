@@ -1,24 +1,20 @@
 <!-- Login -->
 <div class="container text-center col-2 mb-5 mt-5">
-    <h3>Connexion</h3>
-    <br>
-    <form #login="ngForm" (ngSubmit)="onSubmit()">
-      <input class="form-control mb-2" type="text" id="username" placeholder="Username">
-      <input class="form-control" type="password" id="password" placeholder="Password">
-      <br>
-      <input type="submit" class="btn btn-default" value="Connexion">
-    </form>
-</div>
-
-<br>
-<hr>
-<br>
-
-<div class="col-2 mb-5 mt-5">
-  <h3>test</h3>
+  <h3>Connexion</h3>
   <br>
-  <select class="form-control">
-    <option selected>Choisir un user</option>
-    <option *ngFor="let user of users"> {{ user.utilisateur }} - {{  user.mot_de_passe }} </option>
-  </select>
+  <form (ngSubmit)="submit()">
+    <div class="text-left">
+      <label for="utilisateur">Utilisateur</label>
+      <input type="text" name="utilisateur" class="form-control" [(ngModel)]="utilisateur" />
+      <br>
+      <label for="mot_de_passe">Mot de passe</label>
+      <input type="password" name="mot_de_passe" class="form-control" [(ngModel)]="mot_de_passe" />
+    </div>
+    <br>
+    <div class="text-right">
+      <button class="btn btn-primary" type="submit">Connexion</button>
+    </div>
+    <br>
+    <small style="color: red" class="text-center" *ngIf="erreur">{{ erreur }}</small>
+  </form>
 </div>
