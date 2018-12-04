@@ -9,7 +9,6 @@ import { ProjetService } from '../projet.service';
 })
 
 export class HomeComponent implements OnInit {
-
   projets: Projet[];
 
   constructor(private projetService: ProjetService) { }

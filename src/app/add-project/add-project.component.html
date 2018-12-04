@@ -20,9 +20,7 @@
       <label for="serviceResponsable">Service Responsable : </label>
       <select class="form-control" id="serviceResponsable">
         <option selected>Choisir un service</option>
-        <option>AME</option>
-        <option>CS</option>
-        <option>DÉ</option>
+        <option *ngFor="let service of services"> {{ service.code_service }} - {{  service.desc_service }} </option>
       </select>
       <br>
       <label for="partenaire">Partenaire : </label>
@@ -31,9 +29,7 @@
       <label for="source">Source : </label>
       <select class="form-control" id="source">
         <option selected>Choisir une source</option>
-        <option>DG</option>
-        <option>Conseil</option>
-        <option>Commission</option>
+        <option *ngFor="let source of sources"> {{ source.source }} </option>
       </select>
       <br>
       <label for="suiviPar">Suivi par : </label>
@@ -51,28 +47,19 @@
       <label for="prioriteStrat">Priorité Stratégique : </label>
       <select class="form-control" id="prioriteStrat">
         <option selected>Choisir une priorité</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
+        <option *ngFor="let priorite of priorites"> {{ priorite.priorite }} - {{  priorite.desc_priorite }} </option>
       </select>
       <br>
       <label for="shemaProj">Schéma du projet : </label>
       <select class="form-control" id="shemaProj">
         <option selected>Choisir un schéma</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
+        <option *ngFor="let schema of schemas"> {{ schema.no_schema }} - {{  schema.desc_schema }} </option>
       </select>
       <br>
       <label for="orientationStrat">Orientation stratégique : </label>
       <select class="form-control" id="orientationStrat">
         <option selected>Choisir une orientation stratégique</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
+        <option *ngFor="let orientation of orientations"> {{ orientation.no_orientation }} - {{  orientation.nom_orientation }} </option>
       </select>
       <br>
       <label for="noPTI">No PTI : </label>
@@ -90,19 +77,13 @@
       <label for="phaseCours">Phase en cours : </label>
       <select class="form-control" id="phaseCours">
         <option selected>Choisir la phase en cours</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
+        <option *ngFor="let phase of phases"> {{ phase.no_phase }} - {{  phase.nom_phase }} </option>
       </select>
       <br>
       <label for="statutMoisCours">Statut du mois en cours : </label>
       <select class="form-control" id="statutMoisCours">
         <option selected>Choisir le statut du mois en cours</option>
-        <option>En contrôle</option>
-        <option>À débuter</option>
-        <option>Préoccupant</option>
-        <option>Retard/critique</option>
+        <option *ngFor="let statut of statuts"> {{ statut.no_statut }} - {{  statut.statut }} </option>
       </select>
       <br>
       <label for="descriptionStatutCours">Description du statut en cours : </label>
@@ -111,10 +92,7 @@
       <label for="statutMoisPrecedent">Statut du mois précédent : </label>
       <select class="form-control" id="statutMoisPrecedent">
         <option selected>Choisir le statut du mois précédent</option>
-        <option>En contrôle</option>
-        <option>À débuter</option>
-        <option>Préoccupant</option>
-        <option>Retard/critique</option>
+        <option *ngFor="let statut of statuts"> {{ statut.no_statut }} - {{  statut.statut }} </option>
       </select>
       <br>
       <label for="descriptionStatutPrecedent">Description du statut précédent : </label>
