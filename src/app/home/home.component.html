@@ -1,20 +1,29 @@
-<!-- Login -->
-<!-- Créer un component "login" à la place -->
-<div class="container text-center col-2 mb-5 mt-5">
-  <h3>Connexion</h3>
-  <br>
-  <form #login="ngForm">
-    <input class="form-control mb-2" type="text" id="username" placeholder="Username">
-    <input class="form-control" type="password" id="password" placeholder="Password">
-    <br>
-    <input type="submit" class="btn btn-default" value="Connexion">
-  </form>
-</div>
-
-<br>
-<hr>
-<br>
-
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link mr-5" [routerLink]="['/home']">Projet 1</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link mr-5" [routerLink]="['/home']" >Projet 2</a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link mr-5" [routerLink]="['/home']">Projet 3</a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link mr-5" [routerLink]="['/home']">Projet 4</a>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/']">Déconnexion</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <!-- Sélection d'un projet -->
 <div class="container text-center mb-5 mt-5">
