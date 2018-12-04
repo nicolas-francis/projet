@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { PrioriteService } from './priorite.service';
+import { PrioriteService } from '../service/priorite.service';
 
 describe('PrioriteService', () => {
   beforeEach(() => {

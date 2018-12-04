@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Orientation } from './orientation';
+import { User } from '../class/user';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,13 +11,14 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class OrientationService {
-  private orientationsUrl = 'http://localhost:8080/api/orientations';  //URL to web api
+export class UserService {
+  private usersUrl = 'http://localhost:8080/api/users';  //URL to web api
   constructor( 
     private http: HttpClient
   ) { }
 
-  getOrientations (): Observable<Orientation[]> {
-    return this.http.get<Orientation[]>(this.orientationsUrl)
+  getUsers (): Observable<User[]> {
+    return this.http.get<User[]>(this.usersUrl)
   }
+  
 }

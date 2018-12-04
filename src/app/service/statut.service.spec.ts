@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { StatutService } from './statut.service';
+import { StatutService } from '../service/statut.service';
 
 describe('StatutService', () => {
   beforeEach(() => {

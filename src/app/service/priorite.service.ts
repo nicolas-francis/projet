@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Service } from './service';
+import { Priorite } from '../class/priorite';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,13 +11,13 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class ServiceService {
-  private servicesUrl = 'http://localhost:8080/api/services';  //URL to web api
+export class PrioriteService {
+  private prioritesUrl = 'http://localhost:8080/api/priorites';  //URL to web api
   constructor( 
     private http: HttpClient
   ) { }
 
-  getServices (): Observable<Service[]> {
-    return this.http.get<Service[]>(this.servicesUrl)
+  getPriorites (): Observable<Priorite[]> {
+    return this.http.get<Priorite[]>(this.prioritesUrl)
   }
 }

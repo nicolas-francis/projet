@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { SchemaService } from './schema.service';
+import { SchemaService } from '../service/schema.service';
 
 describe('SchemaService', () => {
   beforeEach(() => {
