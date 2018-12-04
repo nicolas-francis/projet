@@ -13,8 +13,16 @@ app.use(cors(corsOptions));
  
 const db = require('./src/app/config/db.config.js');
  
+//tables
 require('./src/app/route/projet.route.js')(app);
 require('./src/app/route/user.route.js')(app);
+require('./src/app/route/service.route.js')(app);
+require('./src/app/route/source.route.js')(app);
+require('./src/app/route/priorite.route.js')(app);
+require('./src/app/route/schema.route.js')(app);
+require('./src/app/route/orientation.route.js')(app);
+require('./src/app/route/phase.route.js')(app);
+require('./src/app/route/statut.route.js')(app);
  
 //Create a Server
 var server = app.listen(8080, function () {

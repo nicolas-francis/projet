@@ -1,5 +1,4 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { ProjetService } from './projet.service';
 
 describe('ProjetService', () => {
