@@ -20,5 +20,20 @@ export class UserService {
   getUsers (): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl)
   }
+
+  addUser (user: User): Observable<User> {
+    return this.http.post<User>(this.usersUrl, user, httpOptions);
+  }
+
+  updateUser (user: User): Observable<any> {
+    return this.http.put(this.usersUrl, user, httpOptions);
+  }
+
+  deleteUser (user: User | number): Observable<User> {
+    const id = typeof user === 'number' ? user : user.id;
+    const url = `${this.usersUrl}/${id}`;
+
+    return this.http.delete<User>(url, httpOptions);
+  }
   
 }
