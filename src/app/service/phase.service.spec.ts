@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { PhaseService } from './phase.service';
+import { PhaseService } from '../service/phase.service';
 
 describe('PhaseService', () => {
   beforeEach(() => {

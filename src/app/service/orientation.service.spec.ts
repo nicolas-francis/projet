@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { OrientationService } from './orientation.service';
+import { OrientationService } from '../service/orientation.service';
 
 describe('OrientationService', () => {
   beforeEach(() => {

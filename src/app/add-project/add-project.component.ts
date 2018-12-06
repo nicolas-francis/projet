@@ -1,18 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { Service } from '../service';
-import { ServiceService } from '../service.service';
-import { Source } from '../source';
-import { SourceService } from '../source.service';
-import { Priorite } from '../priorite';
-import { PrioriteService } from '../priorite.service';
-import { Schema } from '../schema';
-import { SchemaService } from '../schema.service';
-import { Orientation } from '../orientation';
-import { OrientationService } from '../orientation.service';
-import { Phase } from '../phase';
-import { PhaseService } from '../phase.service';
-import { Statut } from '../statut';
-import { StatutService } from '../statut.service';
+
+//import { Service } from '../service';
+//import { ServiceService } from '../service.service';
+import { Service } from '../class/service';
+import { ServiceService } from '../service/service.service';
+
+//import { Source } from '../source';
+//import { SourceService } from '../source.service';
+import { Source } from '../class/source';
+import { SourceService } from '../service/source.service';
+
+//import { Priorite } from '../priorite';
+//import { PrioriteService } from '../priorite.service';
+import { Priorite } from '../class/priorite';
+import { PrioriteService } from '../service/priorite.service';
+
+//import { Schema } from '../schema';
+//import { SchemaService } from '../schema.service';
+import { Schema } from '../class/schema';
+import { SchemaService } from '../service/schema.service';
+
+//import { Orientation } from '../orientation';
+//import { OrientationService } from '../orientation.service';
+import { Orientation } from '../class/orientation';
+import { OrientationService } from '../service/orientation.service';
+
+//import { Phase } from '../phase';
+//import { PhaseService } from '../phase.service';
+import { Phase } from '../class/phase';
+import { PhaseService } from '../service/phase.service';
+
+//import { Statut } from '../statut';
+//import { StatutService } from '../statut.service';
+import { Statut } from '../class/statut';
+import { StatutService } from '../service/statut.service';
 
 @Component({
   selector: 'app-add-project',
