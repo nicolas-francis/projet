@@ -13,7 +13,7 @@ import { UserService } from '../service/user.service';
 export class LoginComponent implements OnInit {
   //tous les utilisateurs
   users: User[];
-  //seulement 1 utilisateur (pour l'ajout)
+  //seulement 1 utilisateur (pour l'ajout et la suppression)
   user = new User;
   message: string;
   public utilisateur: string;
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   public utilisateurIns: string;
   public mot_de_passeIns: string;
   public idUp: number;
-  public idSup: number;
+  public idSup: number = 0;
   public utilisateurUp: string;
   public mot_de_passeUp: string;
   public erreur: string;
