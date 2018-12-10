@@ -12,6 +12,7 @@ exports.findAll = (req, res) => {
 };
 
 //FIND USERNAME
+//tester avec "req.params.id" à la place de "req.params.username"
 exports.findUser = (req, res) => {
 	User.findUser(req.params.username).then(user => {
 		res.json(user);

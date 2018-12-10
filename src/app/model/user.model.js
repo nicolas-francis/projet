@@ -1,5 +1,4 @@
 module.exports = (sequelize, Sequelize) => {
-
 	const User = sequelize.define('pr_utilisateurs', {
 	  utilisateur: {
 			type: Sequelize.STRING
