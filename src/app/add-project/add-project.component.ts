@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 import { Service } from '../class/service';
 import { ServiceService } from '../service/service.service';
@@ -37,29 +36,7 @@ export class AddProjectComponent implements OnInit {
   //seulement 1 projet (pour ajout et suppression)
   projet = new Projet;
 
-  //champs pour l'ajout (***TEST***)
-  public no_projet: string;
-  public desc_projet: string;
-  public indicateur_strategique: string;
-  public code_service: string;
-  public priorite_service: string;
-  public date_echeance: Date;
-  public priorite_strategique: number;
-  public no_schema: number;
-  public no_orientation: number;
-  public no_pti: string;
-  public no_financement: string;
-  public code_budgetaire: string;
-  public statut_encours: string;
-  public desc_statut_encours: string;
-  public statut_precedent: string;
-  public desc_statut_precedent: string;
-  public titre_projet: string;
-  public no_phase: number;
-  public partenaire: string;
-  public source: string;
-  public suivi_par: string;
-  public date_echeance_revisee: Date;
+  //champs pour l'ajout
 
   public no_projetIns: string;
   public desc_projetIns: string;
@@ -93,8 +70,7 @@ export class AddProjectComponent implements OnInit {
     private PhaseService: PhaseService,
     private StatutService: StatutService,
     private ProjetService: ProjetService,
-    private http: HttpClient,
-    private router: Router
+    private http: HttpClient
     ) { }
 
   ngOnInit(): void {
@@ -179,7 +155,6 @@ export class AddProjectComponent implements OnInit {
   }
 
   //Opérations sur la table
-  //register
   addProjet() {
     this.projet.no_projet = this.no_projetIns;
     this.projet.desc_projet = this.desc_projetIns;
@@ -214,7 +189,8 @@ export class AddProjectComponent implements OnInit {
     this.ProjetService.addProjet(this.projet)
         .subscribe();
 
-    this.router.navigate(['home']);
+    //this.router.navigate(['home']);
+    window.location.href = "/home";
   }
 
 }
