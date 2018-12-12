@@ -24,7 +24,7 @@ import { ProjetService } from '../service/projet.service';
   styleUrls: ['./add-project.component.css']
 })
 export class AddProjectComponent implements OnInit {
-  //array des tables de la BD
+  //array des tables de la BD pour les combobox
   services: Service[];
   sources: Source[];
   priorites: Priorite[];
@@ -33,11 +33,10 @@ export class AddProjectComponent implements OnInit {
   phases: Phase[];
   statuts: Statut[];
 
-  //seulement 1 projet (pour ajout et suppression)
+  //seulement 1 projet (pour l'ajout et la suppression)
   projet = new Projet;
 
   //champs pour l'ajout
-
   public no_projetIns: string;
   public desc_projetIns: string;
   public indicateur_strategiqueIns: string;
@@ -154,7 +153,9 @@ export class AddProjectComponent implements OnInit {
                 );
   }
 
+
   //Opérations sur la table
+  //lis les champs du form avec les champs de la BD
   addProjet() {
     this.projet.no_projet = this.no_projetIns;
     this.projet.desc_projet = this.desc_projetIns;
@@ -183,13 +184,12 @@ export class AddProjectComponent implements OnInit {
   }
 
   //enregistrer les données dans la table
-  //lier avec la fonction addUser()
+  //lier avec la fonction addProjet()
   private save(): void {
     console.log(this.projet);
     this.ProjetService.addProjet(this.projet)
         .subscribe();
 
-    //this.router.navigate(['home']);
     window.location.href = "/home";
   }
 

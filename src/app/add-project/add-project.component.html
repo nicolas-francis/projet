@@ -139,11 +139,11 @@
         <input type="text" name="desc_statut_precedentIns" class="form-control" [(ngModel)]="desc_statut_precedentIns" />
       </div>
       <div class="container text-center mb-4">
-        <button class="btn btn-primary" type="submit">Enregistrer</button>
+        <button class="btn btn-primary mr-2" type="submit">Enregistrer</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/home']">Annuler</button>
         <!--
         <button type="submit" class="btn btn-primary mr-3"[routerLink]="['/home']">Ajouter</button>
-        <button type="button" class="btn btn-primary mr-3" [routerLink]="['/home']">Annuler</button>
-        <button type="button" class="btn btn-primary mr-2" [routerLink]="['/home']">Supprimer le projet</button>
+        <button type="button" class="btn btn-primary mr-3" [routerLink]="['/home']">Supprimer le projet</button>
         -->
       </div>
     </div>
