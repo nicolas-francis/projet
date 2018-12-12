@@ -43,3 +43,15 @@ exports.create = (req, res) => {
 			res.status(500).json({msg: "error", details: err});
 		});
 };
+
+//DELETE PROJECT
+exports.delete = (req, res) => {
+	const id = req.params.id;
+	Projet.destroy({
+			where: { id: id } }).then(() => {
+			res.status(200).json( { msg: 'Deleted Successfully -> Project Id = ' + id } );
+		}).catch(err => {
+			console.log(err);
+			res.status(500).json({msg: "error", details: err});
+		});
+};

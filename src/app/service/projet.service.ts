@@ -24,5 +24,12 @@ export class ProjetService {
   addProjet (projet: Projet): Observable<Projet> {
     return this.http.post<Projet>(this.projetsUrl, projet, httpOptions);
   }
+
+  deleteProjet (user: Projet | number): Observable<Projet> {
+    const id = typeof user === 'number' ? user : user.id;
+    const url = `${this.projetsUrl}/${id}`;
+
+    return this.http.delete<Projet>(url, httpOptions);
+  }
   
 }
