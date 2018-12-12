@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { Service } from '../class/service';
 import { ServiceService } from '../service/service.service';
 import { Source } from '../class/source';
@@ -13,6 +15,8 @@ import { Phase } from '../class/phase';
 import { PhaseService } from '../service/phase.service';
 import { Statut } from '../class/statut';
 import { StatutService } from '../service/statut.service';
+import { Projet } from '../class/projet';
+import { ProjetService } from '../service/projet.service';
 
 @Component({
   selector: 'app-add-project',
@@ -20,6 +24,7 @@ import { StatutService } from '../service/statut.service';
   styleUrls: ['./add-project.component.css']
 })
 export class AddProjectComponent implements OnInit {
+  //array des tables de la BD pour les combobox
   services: Service[];
   sources: Source[];
   priorites: Priorite[];
@@ -28,6 +33,33 @@ export class AddProjectComponent implements OnInit {
   phases: Phase[];
   statuts: Statut[];
 
+  //seulement 1 projet (pour l'ajout et la suppression)
+  projet = new Projet;
+
+  //champs pour l'ajout
+  public no_projetIns: string;
+  public desc_projetIns: string;
+  public indicateur_strategiqueIns: string;
+  public code_serviceIns: string;
+  public priorite_serviceIns: string;
+  public date_echeanceIns: Date;
+  public priorite_strategiqueIns: number;
+  public no_schemaIns: number;
+  public no_orientationIns: number;
+  public no_ptiIns: string;
+  public no_financementIns: string;
+  public code_budgetaireIns: string;
+  public statut_encoursIns: string;
+  public desc_statut_encoursIns: string;
+  public statut_precedentIns: string;
+  public desc_statut_precedentIns: string;
+  public titre_projetIns: string;
+  public no_phaseIns: number;
+  public partenaireIns: string;
+  public sourceIns: string;
+  public suivi_parIns: string;
+  public date_echeance_reviseeIns: Date;
+
   constructor(
     private ServiceService: ServiceService, 
     private SourceService: SourceService,
@@ -35,7 +67,9 @@ export class AddProjectComponent implements OnInit {
     private SchemaService: SchemaService,
     private OrientationService: OrientationService,
     private PhaseService: PhaseService,
-    private StatutService: StatutService
+    private StatutService: StatutService,
+    private ProjetService: ProjetService,
+    private http: HttpClient
     ) { }
 
   ngOnInit(): void {
@@ -119,7 +153,44 @@ export class AddProjectComponent implements OnInit {
                 );
   }
 
+
   //Opérations sur la table
-  
+  //lis les champs du form avec les champs de la BD
+  addProjet() {
+    this.projet.no_projet = this.no_projetIns;
+    this.projet.desc_projet = this.desc_projetIns;
+    this.projet.indicateur_strategique = this.indicateur_strategiqueIns;
+    this.projet.code_service = this.code_serviceIns;
+    this.projet.priorite_service = this.priorite_serviceIns;
+    this.projet.date_echeance = this.date_echeanceIns;
+    this.projet.priorite_strategique = this.priorite_strategiqueIns;
+    this.projet.no_schema = this.no_schemaIns;
+    this.projet.no_orientation = this.no_orientationIns;
+    this.projet.no_pti = this.no_ptiIns;
+    this.projet.no_financement = this.no_financementIns;
+    this.projet.code_budgetaire = this.code_budgetaireIns;
+    this.projet.statut_encours = this.statut_encoursIns;
+    this.projet.desc_statut_encours = this.desc_statut_encoursIns;
+    this.projet.statut_precedent = this.statut_precedentIns;
+    this.projet.desc_statut_precedent = this.desc_statut_precedentIns;
+    this.projet.titre_projet = this.titre_projetIns;
+    this.projet.no_phase = this.no_phaseIns;
+    this.projet.partenaire = this.partenaireIns;
+    this.projet.source = this.sourceIns;
+    this.projet.suivi_par = this.suivi_parIns;
+    this.projet.date_echeance_revisee = this.date_echeance_reviseeIns;
+
+    this.save();
+  }
+
+  //enregistrer les données dans la table
+  //lier avec la fonction addProjet()
+  private save(): void {
+    console.log(this.projet);
+    this.ProjetService.addProjet(this.projet)
+        .subscribe();
+
+    window.location.href = "/home";
+  }
 
 }

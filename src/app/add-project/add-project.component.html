@@ -27,129 +27,124 @@
 
 <!-- Formulaire -->
 <div class="content">
-  <form #addProjectForm="ngForm">
+  <form (ngSubmit)="addProjet()">
     <div class="ml-4">
       <h4 class="mx-3 pt-5 pb-1">INFORMATION PROJET</h4>
       <div class="col-2 mb-3 mt-3">
-        <label for="noProjet">Numéro Projet : </label>
-        <input type="text" id="noProjet" class="form-control" placeholder="Numéro du projet" required>
+        <label for="no_projetIns">Numéro Projet : </label>
+        <input type="text" name="no_projetIns" class="form-control" [(ngModel)]="no_projetIns" />
       </div>
       <div class="col-3 mb-3">
-        <label for="titreProjet">Titre du projet : </label>
-        <input type="text" id="titreProjet" class="form-control" placeholder="Titre du projet" required>
+        <label for="titre_projetIns">Titre du projet : </label>
+        <input type="text" name="titre_projetIns" class="form-control" [(ngModel)]="titre_projetIns" />
       </div>
       <div class="col-6 mb-3">
-        <label for="descriptionProjet">Description du projet : </label>
-        <input type="text" id="descriptionProjet" class="form-control" placeholder="Description du projet">
+        <label for="desc_projetIns">Description du projet : </label>
+        <input type="text" name="desc_projetIns" class="form-control" [(ngModel)]="desc_projetIns" />
       </div>
       <div class="col-3 mb-3">
-        <label for="indicateurGestion">Indicateur de gestion : </label>
-        <input type="text" id="indicateurGestion" class="form-control" placeholder="Indicateur de gestion du projet">
+        <label for="indicateur_strategiqueIns">Indicateur de gestion : </label>
+        <input type="text" name="indicateur_strategiqueIns" class="form-control" [(ngModel)]="indicateur_strategiqueIns" />
       </div>
       <div class="col-2 mb-3">
-        <label for="serviceResponsable">Service Responsable : </label>
-        <select class="form-control" id="serviceResponsable">
-          <option selected>Choisir un service</option>
-          <option *ngFor="let service of services"> {{ service.code_service }} - {{  service.desc_service }} </option>
+        <label for="code_serviceIns">Service Responsable : </label>
+        <select [(ngModel)]="code_serviceIns" class="form-control" name="code_serviceIns">
+          <option *ngFor="let service of services" value="{{ service.code_service }}"> {{ service.code_service }} - {{  service.desc_service }} </option>
         </select>
       </div>
       <div class="col-2 mb-3">
-        <label for="partenaire">Partenaire : </label>
-        <input type="text" id="partenaire" class="form-control" placeholder="Partenaire">
+        <label for="partenaireIns">Partenaire : </label>
+        <input type="text" name="partenaireIns" class="form-control" [(ngModel)]="partenaireIns" />
       </div>
       <div class="col-2 mb-3">
-        <label for="source">Source : </label>
-        <select class="form-control" id="source">
-          <option selected>Choisir une source</option>
-          <option *ngFor="let source of sources"> {{ source.source }} </option>
-        </select>
+          <label for="sourceIns">Source : </label>
+          <select [(ngModel)]="sourceIns" class="form-control" name="sourceIns">
+            <option *ngFor="let source of sources" value="{{ source.id }}"> {{ source.id }} - {{  source.source }} </option>
+          </select>
       </div>
       <div class="col-1 mb-3">
-        <label for="suiviPar">Suivi par : </label>
-        <input type="text" id="suiviPar" class="form-control" placeholder="Suivi par">
+        <label for="suivi_parIns">Suivi par : </label>
+        <input type="text" name="suivi_parIns" class="form-control" [(ngModel)]="suivi_parIns" />
       </div>
       <div class="col-2 mb-3">
-        <label for="prioriteService">Priorité de service : </label>
-        <input type="text" id="prioriteService" class="form-control" placeholder="Priorité de service">
+        <label for="priorite_serviceIns">Priorité de service : </label>
+        <input type="number" name="priorite_serviceIns" class="form-control" [(ngModel)]="priorite_serviceIns" />
       </div>
       <div class="col-2 mb-3">
-        <label for="dateEcheance">Date d'échéance : </label>
-        <input type="date" id="dateEcheance" class="form-control" placeholder="Date d'échéance">
+        <label for="date_echeanceIns">Date d'échéance : </label>
+        <input type="date" name="date_echeanceIns" class="form-control" [(ngModel)]="date_echeanceIns" />
       </div>
       <div class="col-2 mb-3">
-        <label for="dateEcheanceRevisee">Date d'échéance révisée : </label>
-        <input type="date" id="dateEcheanceRevisee" class="form-control" placeholder="Date d'échéance révisée">
+        <label for="date_echeance_reviseeIns">Date d'échéance révisée : </label>
+        <input type="date" name="date_echeance_reviseeIns" class="form-control" [(ngModel)]="date_echeance_reviseeIns" />
       </div>
       <div class="col-3 mb-3">
-        <label for="prioriteStrat">Priorité Stratégique : </label>
-        <select class="form-control" id="prioriteStrat">
-          <option selected>Choisir une priorité</option>
-          <option *ngFor="let priorite of priorites"> {{ priorite.priorite }} - {{  priorite.desc_priorite }} </option>
+        <label for="priorite_strategiqueIns">Priorité Stratégique : </label>
+        <select [(ngModel)]="priorite_strategiqueIns" class="form-control" name="priorite_strategiqueIns">
+          <option *ngFor="let priorite of priorites" value="{{ priorite.priorite }}"> {{ priorite.priorite }} - {{  priorite.desc_priorite }} </option>
         </select>
       </div>
       <div class="col-4 mb-3">
-        <label for="shemaProj">Schéma du projet : </label>
-        <select class="form-control" id="shemaProj">
-          <option selected>Choisir un schéma</option>
-          <option *ngFor="let schema of schemas"> {{ schema.no_schema }} - {{  schema.desc_schema }} </option>
+        <label for="no_schemaIns">Schéma du projet : </label>
+        <select [(ngModel)]="no_schemaIns" class="form-control" name="no_schemaIns">
+          <option *ngFor="let schema of schemas" value="{{ schema.no_schema }}"> {{ schema.no_schema }} - {{  schema.desc_schema }} </option>
         </select>
       </div>
       <div class="col-3 mb-3">
-        <label for="orientationStrat">Orientation stratégique : </label>
-        <select class="form-control" id="orientationStrat">
-          <option selected>Choisir une orientation stratégique</option>
-          <option *ngFor="let orientation of orientations"> {{ orientation.no_orientation }} - {{  orientation.nom_orientation }} </option>
+        <label for="no_orientationIns">Orientation stratégique : </label>
+        <select [(ngModel)]="no_orientationIns" class="form-control" name="no_orientationIns">
+          <option *ngFor="let orientation of orientations" value="{{ orientation.no_orientation }}"> {{ orientation.no_orientation }} - {{  orientation.nom_orientation }} </option>
         </select>
       </div>
       <div class="col-2 mb-3">
-        <label for="noPTI">Numéro PTI : </label>
-        <input type="number" id="noPTI" class="form-control" placeholder="Numéro PTI">
+        <label for="no_ptiIns">Numéro PTI : </label>
+        <input type="number" name="no_ptiIns" class="form-control" [(ngModel)]="no_ptiIns" />
       </div>
       <div class="col-2 mb-3">
-        <label for="noFinancement">Numéro financement : </label>
-        <input type="number" id="noFinancement" class="form-control" placeholder="Numéro financement">
+        <label for="no_financementIns">Numéro financement : </label>
+        <input type="number" name="no_financementIns" class="form-control" [(ngModel)]="no_financementIns" />
       </div>
       <div class="col-2 mb-3">
-        <label for="codeBudget">Code budgétaire : </label>
-        <input type="text" id="codeBudget" class="form-control" placeholder="Code budgétaire">
+        <label for="code_budgetaireIns">Code budgétaire : </label>
+        <input type="text" name="code_budgetaireIns" class="form-control" [(ngModel)]="code_budgetaireIns" />
       </div>
 
       <br>
 
       <h5 class="mx-3 pt-3">STATUT</h5>
       <div class="col-3 mb-3">
-        <label for="phaseCours">Phase en cours : </label>
-        <select class="form-control" id="phaseCours">
-          <option selected>Choisir la phase en cours</option>
-          <option *ngFor="let phase of phases"> {{ phase.no_phase }} - {{  phase.nom_phase }} </option>
+        <label for="no_phaseIns">Phase en cours : </label>
+        <select [(ngModel)]="no_phaseIns" class="form-control" name="no_phaseIns">
+          <option *ngFor="let phase of phases" value="{{ phase.no_phase }}"> {{ phase.no_phase }} - {{  phase.nom_phase }} </option>
         </select>
       </div>
       <div class="col-3 mb-3">
-        <label for="statutMoisCours">Statut du mois en cours : </label>
-        <select class="form-control" id="statutMoisCours">
-          <option selected>Choisir le statut du mois en cours</option>
-          <option *ngFor="let statut of statuts"> {{ statut.no_statut }} - {{  statut.statut }} </option>
+        <label for="statut_encoursIns">Statut du mois en cours : </label>
+        <select [(ngModel)]="statut_encoursIns" class="form-control" name="statut_encoursIns">
+          <option *ngFor="let statut of statuts" value="{{ statut.no_statut }}"> {{ statut.no_statut }} - {{  statut.statut }} </option>
         </select>
       </div>
       <div class="col-6 mb-3">
-        <label for="descriptionStatutCours">Description du statut en cours : </label>
-        <input type="text" id="descriptionStatutCours" class="form-control" placeholder="Description du statut en cours">
+        <label for="desc_statut_encoursIns">Description du statut en cours : </label>
+        <input type="text" name="desc_statut_encoursIns" class="form-control" [(ngModel)]="desc_statut_encoursIns" />
       </div>
       <div class="col-3 mb-3">
-        <label for="statutMoisPrecedent">Statut du mois précédent : </label>
-        <select class="form-control" id="statutMoisPrecedent">
-          <option selected>Choisir le statut du mois précédent</option>
-          <option *ngFor="let statut of statuts"> {{ statut.no_statut }} - {{  statut.statut }} </option>
+        <label for="statut_precedentIns">Statut du mois précédent : </label>
+        <select [(ngModel)]="statut_precedentIns" class="form-control" name="statut_precedentIns">
+          <option *ngFor="let statut of statuts" value="{{ statut.no_statut }}"> {{ statut.no_statut }} - {{  statut.statut }} </option>
         </select>
       </div>
       <div class="col-6 mb-5">
-        <label for="descriptionStatutPrecedent">Description du statut précédent : </label>
-        <input type="text" id="descriptionStatutPrecedent" class="form-control" placeholder="Description du statut précédent">
+        <label for="desc_statut_precedentIns">Description du statut précédent : </label>
+        <input type="text" name="desc_statut_precedentIns" class="form-control" [(ngModel)]="desc_statut_precedentIns" />
       </div>
       <div class="container text-center mb-4">
+        <button class="btn btn-primary mr-2" type="submit">Enregistrer</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/home']">Annuler</button>
+        <!--
         <button type="submit" class="btn btn-primary mr-3"[routerLink]="['/home']">Ajouter</button>
-        <button type="button" class="btn btn-primary mr-3" [routerLink]="['/home']">Annuler</button>
-        <button type="button" class="btn btn-primary mr-2" [routerLink]="['/home']">Supprimer le projet</button>
+        <button type="button" class="btn btn-primary mr-3" [routerLink]="['/home']">Supprimer le projet</button>
+        -->
       </div>
     </div>
     <br>
