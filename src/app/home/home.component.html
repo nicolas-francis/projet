@@ -25,17 +25,17 @@
   </div>
 </nav>
 
-<!-- Ajout / modification d'un projet -->
+<!-- Ajout / modification / suppression d'un projet -->
 <div class="container text-center mt-5">
   <h1>Shawinigan</h1>
   <p>Gestion des projets</p>
   <br>
-  <select class="form-control">
-    <option selected>Choisir un projet</option>
-    <option *ngFor="let projet of projets"> {{ projet.no_projet }} - {{  projet.desc_projet }} </option>
+  <select [(ngModel)]="idProjet" class="form-control" name="idProjet">
+    <option *ngFor="let projet of projets" value="{{ projet.id }}"> {{ projet.no_projet }} - {{  projet.desc_projet }} </option>
   </select>
   <br>
   <br>
   <button type="button" class="btn btn-primary mr-2" [routerLink]="['/add']">Nouveau projet</button>
-  <button type="button" class="btn btn-primary">Modifier le projet</button>
+  <button type="button" class="btn btn-primary mr-2">Modifier le projet</button>
+  <button type="button" class="btn btn-primary" (click)="delete()">Supprimer le projet</button>
 </div>
