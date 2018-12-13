@@ -21,6 +21,11 @@ export class ProjetService {
     return this.http.get<Projet[]>(this.projetsUrl)
   }
 
+  getProjet(id: number): Observable<Projet> {
+    const url = `${this.projetsUrl}/${id}`;
+    return this.http.get<Projet>(url);
+  }
+
   addProjet (projet: Projet): Observable<Projet> {
     return this.http.post<Projet>(this.projetsUrl, projet, httpOptions);
   }
@@ -30,6 +35,10 @@ export class ProjetService {
     const url = `${this.projetsUrl}/${id}`;
 
     return this.http.delete<Projet>(url, httpOptions);
+  }
+
+  updateProjet (projet: Projet): Observable<any> {
+    return this.http.put(this.projetsUrl, projet, httpOptions);
   }
   
 }

@@ -55,3 +55,25 @@ exports.delete = (req, res) => {
 			res.status(500).json({msg: "error", details: err});
 		});
 };
+
+//FIND PROJECT BY ID
+exports.findById = (req, res) => {	
+	Projet.findById(req.params.id).then(projet => {
+			res.json(projet);
+		}).catch(err => {
+			console.log(err);
+			res.status(500).json({msg: "error", details: err});
+		});
+};
+
+//UPDATE A PROJECT
+exports.update = (req, res) => {
+	const id = req.body.id;
+	Projet.update( req.body, 
+			{ where: {id: id} }).then(() => {
+				res.status(200).json( { mgs: "Updated Successfully -> Project Id = " + id } );
+			}).catch(err => {
+				console.log(err);
+				res.status(500).json({msg: "error", details: err});
+			});
+};

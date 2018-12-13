@@ -37,13 +37,13 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.STRING
 		},
 		statut_encours: {
-			type: Sequelize.STRING
+			type: Sequelize.INTEGER
 		},
 		desc_statut_encours: {
 			type: Sequelize.STRING
 		},
 		statut_precedent: {
-			type: Sequelize.STRING
+			type: Sequelize.INTEGER
 		},
 		desc_statut_precedent: {
 			type: Sequelize.STRING
