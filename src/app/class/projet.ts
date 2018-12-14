@@ -12,9 +12,9 @@ export class Projet {
     no_pti: string;
     no_financement: string;
     code_budgetaire: string;
-    statut_encours: string;
+    statut_encours: number;
     desc_statut_encours: string;
-    statut_precedent: string;
+    statut_precedent: number;
     desc_statut_precedent: string;
     titre_projet: string;
     no_phase: number;

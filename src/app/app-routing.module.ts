@@ -23,6 +23,10 @@ const routes: Routes = [
     /* ,canActivate: [AuthGuard] */
   },
   {
+    path: 'add/:id',
+    component: AddProjectComponent
+  },
+  {
     path: '**',
     component: HomeComponent
     /* ,canActivate: [AuthGuard] */

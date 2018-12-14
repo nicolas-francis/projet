@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 import { Service } from '../class/service';
 import { ServiceService } from '../service/service.service';
@@ -49,9 +50,9 @@ export class AddProjectComponent implements OnInit {
   public no_ptiIns: string;
   public no_financementIns: string;
   public code_budgetaireIns: string;
-  public statut_encoursIns: string;
+  public statut_encoursIns: number;
   public desc_statut_encoursIns: string;
-  public statut_precedentIns: string;
+  public statut_precedentIns: number;
   public desc_statut_precedentIns: string;
   public titre_projetIns: string;
   public no_phaseIns: number;
@@ -59,6 +60,13 @@ export class AddProjectComponent implements OnInit {
   public sourceIns: string;
   public suivi_parIns: string;
   public date_echeance_reviseeIns: Date;
+
+  //autres variables
+  public endUrl: string;
+  public updateShow: boolean = false;
+  public verifNumber: number;
+  public idProjet: number;
+  message: string;
 
   constructor(
     private ServiceService: ServiceService, 
@@ -69,10 +77,23 @@ export class AddProjectComponent implements OnInit {
     private PhaseService: PhaseService,
     private StatutService: StatutService,
     private ProjetService: ProjetService,
+    private route: ActivatedRoute,
     private http: HttpClient
     ) { }
 
   ngOnInit(): void {
+    this.endUrl = window.location.href;
+    this.endUrl = this.endUrl.substr(window.location.href.lastIndexOf('/') + 1);
+    this.verifNumber = +this.endUrl;
+
+    if (this.verifNumber > 0) {
+      this.updateShow = true;
+
+      const id = +this.route.snapshot.paramMap.get('id');
+      this.ProjetService.getProjet(id)
+          .subscribe(projet => this.projet = projet);
+    }
+
     this.getServices();
     this.getSources();
     this.getPriorites();
@@ -184,11 +205,30 @@ export class AddProjectComponent implements OnInit {
   }
 
   //enregistrer les données dans la table
-  //lier avec la fonction addProjet()
+  //lier avec la fonction addProjet() plus haut
   private save(): void {
     console.log(this.projet);
     this.ProjetService.addProjet(this.projet)
         .subscribe();
+
+    window.location.href = "/home";
+  }
+
+  //Supprimer
+  delete(): void {
+    this.idProjet = +this.endUrl;
+
+    console.log(this.projet);
+    this.ProjetService.deleteProjet(this.projet)
+        .subscribe(result => this.message = "Project Deleted Successfully!");
+
+    window.location.href = "/home";
+  }
+
+  //modifier
+  update(): void {
+    this.ProjetService.updateProjet(this.projet)
+        .subscribe(result => this.message = "Project Updated Successfully!");
 
     window.location.href = "/home";
   }

@@ -26,7 +26,7 @@
 </nav>
 
 <!-- Formulaire -->
-<div class="content">
+<div class="content" *ngIf="updateShow != true">
   <form (ngSubmit)="addProjet()">
     <div class="ml-4">
       <h4 class="mx-3 pt-5 pb-1">INFORMATION PROJET</h4>
@@ -34,20 +34,22 @@
         <label for="no_projetIns">Numéro Projet : </label>
         <input type="text" name="no_projetIns" class="form-control" [(ngModel)]="no_projetIns" />
       </div>
-      <div class="col-3 mb-3">
+      <div class="col-5 mb-3">
         <label for="titre_projetIns">Titre du projet : </label>
         <input type="text" name="titre_projetIns" class="form-control" [(ngModel)]="titre_projetIns" />
       </div>
-      <div class="col-6 mb-3">
+      <div class="col-8 mb-3">
         <label for="desc_projetIns">Description du projet : </label>
-        <input type="text" name="desc_projetIns" class="form-control" [(ngModel)]="desc_projetIns" />
+        <textarea rows="4" name="desc_projetIns" class="form-control" [(ngModel)]="desc_projetIns"></textarea>
       </div>
-      <div class="col-3 mb-3">
+      <div class="col-5 mb-3">
         <label for="indicateur_strategiqueIns">Indicateur de gestion : </label>
         <input type="text" name="indicateur_strategiqueIns" class="form-control" [(ngModel)]="indicateur_strategiqueIns" />
       </div>
-      <div class="col-2 mb-3">
+      <div class="col-5">
         <label for="code_serviceIns">Service Responsable : </label>
+      </div>
+      <div class="col-4 mb-3">
         <select [(ngModel)]="code_serviceIns" class="form-control" name="code_serviceIns">
           <option *ngFor="let service of services" value="{{ service.code_service }}"> {{ service.code_service }} - {{  service.desc_service }} </option>
         </select>
@@ -56,35 +58,39 @@
         <label for="partenaireIns">Partenaire : </label>
         <input type="text" name="partenaireIns" class="form-control" [(ngModel)]="partenaireIns" />
       </div>
-      <div class="col-2 mb-3">
+      <div class="col-3 mb-3">
           <label for="sourceIns">Source : </label>
           <select [(ngModel)]="sourceIns" class="form-control" name="sourceIns">
             <option *ngFor="let source of sources" value="{{ source.id }}"> {{ source.id }} - {{  source.source }} </option>
           </select>
       </div>
-      <div class="col-1 mb-3">
+      <div class="col-5">
         <label for="suivi_parIns">Suivi par : </label>
+      </div>
+      <div class="col-2 mb-3">
         <input type="text" name="suivi_parIns" class="form-control" [(ngModel)]="suivi_parIns" />
       </div>
       <div class="col-2 mb-3">
         <label for="priorite_serviceIns">Priorité de service : </label>
         <input type="number" name="priorite_serviceIns" class="form-control" [(ngModel)]="priorite_serviceIns" />
       </div>
-      <div class="col-2 mb-3">
+      <div class="col-3 mb-3">
         <label for="date_echeanceIns">Date d'échéance : </label>
         <input type="date" name="date_echeanceIns" class="form-control" [(ngModel)]="date_echeanceIns" />
       </div>
-      <div class="col-2 mb-3">
+      <div class="col-5">
         <label for="date_echeance_reviseeIns">Date d'échéance révisée : </label>
-        <input type="date" name="date_echeance_reviseeIns" class="form-control" [(ngModel)]="date_echeance_reviseeIns" />
       </div>
       <div class="col-3 mb-3">
+        <input type="date" name="date_echeance_reviseeIns" class="form-control" [(ngModel)]="date_echeance_reviseeIns" />
+      </div>
+      <div class="col-5 mb-3">
         <label for="priorite_strategiqueIns">Priorité Stratégique : </label>
         <select [(ngModel)]="priorite_strategiqueIns" class="form-control" name="priorite_strategiqueIns">
           <option *ngFor="let priorite of priorites" value="{{ priorite.priorite }}"> {{ priorite.priorite }} - {{  priorite.desc_priorite }} </option>
         </select>
       </div>
-      <div class="col-4 mb-3">
+      <div class="col-5 mb-3">
         <label for="no_schemaIns">Schéma du projet : </label>
         <select [(ngModel)]="no_schemaIns" class="form-control" name="no_schemaIns">
           <option *ngFor="let schema of schemas" value="{{ schema.no_schema }}"> {{ schema.no_schema }} - {{  schema.desc_schema }} </option>
@@ -100,8 +106,10 @@
         <label for="no_ptiIns">Numéro PTI : </label>
         <input type="number" name="no_ptiIns" class="form-control" [(ngModel)]="no_ptiIns" />
       </div>
-      <div class="col-2 mb-3">
+      <div class="col-5">
         <label for="no_financementIns">Numéro financement : </label>
+      </div>
+      <div class="col-2 mb-3">
         <input type="number" name="no_financementIns" class="form-control" [(ngModel)]="no_financementIns" />
       </div>
       <div class="col-2 mb-3">
@@ -124,9 +132,9 @@
           <option *ngFor="let statut of statuts" value="{{ statut.no_statut }}"> {{ statut.no_statut }} - {{  statut.statut }} </option>
         </select>
       </div>
-      <div class="col-6 mb-3">
+      <div class="col-8 mb-3">
         <label for="desc_statut_encoursIns">Description du statut en cours : </label>
-        <input type="text" name="desc_statut_encoursIns" class="form-control" [(ngModel)]="desc_statut_encoursIns" />
+        <textarea rows="4" name="desc_statut_encours" class="form-control" [(ngModel)]="desc_statut_encoursIns"></textarea>
       </div>
       <div class="col-3 mb-3">
         <label for="statut_precedentIns">Statut du mois précédent : </label>
@@ -134,19 +142,138 @@
           <option *ngFor="let statut of statuts" value="{{ statut.no_statut }}"> {{ statut.no_statut }} - {{  statut.statut }} </option>
         </select>
       </div>
-      <div class="col-6 mb-5">
+      <div class="col-8 mb-5">
         <label for="desc_statut_precedentIns">Description du statut précédent : </label>
-        <input type="text" name="desc_statut_precedentIns" class="form-control" [(ngModel)]="desc_statut_precedentIns" />
+        <textarea rows="4" name="desc_statut_precedentIns" class="form-control" [(ngModel)]="desc_statut_precedentIns"></textarea>
       </div>
       <div class="container text-center mb-4">
         <button class="btn btn-primary mr-2" type="submit">Enregistrer</button>
         <button type="button" class="btn btn-primary" [routerLink]="['/home']">Annuler</button>
-        <!--
-        <button type="submit" class="btn btn-primary mr-3"[routerLink]="['/home']">Ajouter</button>
-        <button type="button" class="btn btn-primary mr-3" [routerLink]="['/home']">Supprimer le projet</button>
-        -->
       </div>
     </div>
     <br>
+  </form>
+</div>
+
+
+<!-- Update / delete -->
+<div *ngIf="updateShow">
+  <form (ngSubmit)="update()">
+    <h4 class="mx-3 pt-5 pb-1">INFORMATION PROJET</h4>
+    <div class="col-2 mb-3 mt-3">
+      <label for="no_projet">Numéro Projet : </label>
+      <input type="text" name="no_projet" id="no_projet" class="form-control" [(ngModel)]="projet.no_projet"  #no_projet="ngModel" />
+    </div>
+    <div class="col-5 mb-3">
+      <label for="titre_projet">Titre du Projet : </label>
+      <input type="text" name="titre_projet" id="titre_projet" class="form-control" [(ngModel)]="projet.titre_projet"  #titre_projet="ngModel" />
+    </div>
+    <div class="col-8 mb-3">
+      <label for="desc_projet">Description du Projet : </label>
+      <textarea rows="4" name="desc_projet" id="desc_projet" class="form-control" [(ngModel)]="projet.desc_projet" #projet.desc_projet="ngModel"></textarea>
+    </div>
+    <div class="col-5 mb-3">
+      <label for="indicateur_strategique">Indicateur de gestion : </label>
+      <input type="text" name="indicateur_strategique" id="indicateur_strategique" class="form-control" [(ngModel)]="projet.indicateur_strategique"  #indicateur_strategique="ngModel" />
+    </div>
+    <div class="col-4 mb-3">
+      <label for="code_service">Service Responsable : </label>
+      <select [(ngModel)]="projet.code_service" class="form-control" name="code_service" id="code_service" #code_service="ngModel">
+        <option *ngFor="let service of services" value="{{ service.code_service }}"> {{ service.code_service }} - {{  service.desc_service }} </option>
+      </select>
+    </div>
+    <div class="col-2 mb-3">
+      <label for="partenaire">Partenaire : </label>
+      <input type="text" name="partenaire" id="partenaire" class="form-control" [(ngModel)]="projet.partenaire"  #partenaire="ngModel" />
+    </div>
+    <div class="col-3 mb-3">
+      <label for="source">Source : </label>
+      <select [(ngModel)]="projet.source" class="form-control" name="source" id="source" #source="ngModel">
+        <option *ngFor="let source of sources" value="{{ source.id }}"> {{ source.id }} - {{  source.source }} </option>
+      </select>
+    </div>
+    <div class="col-2 mb-3">
+      <label for="suivi_par">Suivi par : </label>
+      <input type="text" name="suivi_par" id="suivi_par" class="form-control" [(ngModel)]="projet.suivi_par"  #suivi_par="ngModel" />
+    </div>
+    <div class="col-2 mb-3">
+      <label for="priorite_service">Priorité de service : </label>
+      <input type="number" name="priorite_service" id="priorite_service" class="form-control" [(ngModel)]="projet.priorite_service"  #priorite_service="ngModel" />
+    </div>
+    <div class="col-3 mb-3">
+      <label for="date_echeance">Date d'échéance : </label>
+      <input type="date" name="date_echeance" id="date_echeance" class="form-control" [(ngModel)]="projet.date_echeance"  #date_echeance="ngModel" />
+    </div>
+    <div class="col-3 mb-3">
+      <label for="date_echeance_revisee">Date d'échéance révisée : </label>
+      <input type="date" name="date_echeance_revisee" id="date_echeance_revisee" class="form-control" [(ngModel)]="projet.date_echeance_revisee"  #date_echeance_revisee="ngModel" />
+    </div>
+    <div class="col-5 mb-3">
+      <label for="priorite_strategique">Priorité stratégique : </label>
+      <select [(ngModel)]="projet.priorite_strategique" class="form-control" name="priorite_strategique" id="priorite_strategique" #priorite_strategique="ngModel">
+        <option *ngFor="let priorite of priorites" value="{{ priorite.priorite }}"> {{ priorite.priorite }} - {{  priorite.desc_priorite }} </option>
+      </select>
+    </div>
+    <div class="col-5 mb-3">
+      <label for="no_schema">Schéma du projet : </label>
+      <select [(ngModel)]="projet.no_schema" class="form-control" name="no_schema" id="no_schema" #no_schema="ngModel">
+        <option *ngFor="let schema of schemas" value="{{ schema.no_schema }}"> {{ schema.no_schema }} - {{  schema.desc_schema }} </option>
+      </select>
+    </div>
+    <div class="col-3 mb-3">
+      <label for="no_orientation">Orientation stratégique : </label>
+      <select [(ngModel)]="projet.no_orientation" class="form-control" name="no_orientation" id="no_orientation" #no_orientation="ngModel">
+        <option *ngFor="let orientation of orientations" value="{{ orientation.no_orientation }}"> {{ orientation.no_orientation }} - {{  orientation.nom_orientation }} </option>
+      </select>
+    </div>
+    <div class="col-2 mb-3">
+      <label for="no_pti">Numéro PTI : </label>
+      <input type="number" name="no_pti" id="no_pti" class="form-control" [(ngModel)]="projet.no_pti"  #no_pti="ngModel" />
+    </div>
+    <div class="col-5">
+      <label for="no_financement">Numéro financement : </label>
+    </div>
+    <div class="col-2 mb-3">
+      <input type="number" name="no_financement" id="no_financement" class="form-control" [(ngModel)]="projet.no_financement"  #no_financement="ngModel" />
+    </div>
+    <div class="col-2 mb-3">
+      <label for="code_budgetaire">Code budgétaire : </label>
+      <input type="text" name="code_budgetaire" id="code_budgetaire" class="form-control" [(ngModel)]="projet.code_budgetaire"  #code_budgetaire="ngModel" />
+    </div>
+
+    <br>
+
+    <h5 class="mx-3 pt-3">STATUT</h5>
+    <div class="col-3 mb-3">
+      <label for="no_phase">Phase en cours : </label>
+      <select [(ngModel)]="projet.no_phase" class="form-control" name="no_phase" id="no_phase" #no_phase="ngModel">
+        <option *ngFor="let phase of phases" value="{{ phase.no_phase }}"> {{ phase.no_phase }} - {{  phase.nom_phase }} </option>
+      </select>
+    </div>
+    <div class="col-3 mb-3">
+      <label for="statut_encours">Statut du mois en cours : </label>
+      <select [(ngModel)]="projet.statut_encours" class="form-control" name="statut_encours" id="statut_encours" #statut_encours="ngModel">
+        <option *ngFor="let statut of statuts" value="{{ statut.no_statut }}"> {{ statut.no_statut }} - {{  statut.statut }} </option>
+      </select>
+    </div>
+    <div class="col-8 mb-3">
+      <label for="desc_statut_encours">Description du statut en cours : </label>
+      <textarea rows="4" name="desc_statut_encours" id="desc_statut_encours" class="form-control" [(ngModel)]="projet.desc_statut_encours" #projet.desc_statut_encours="ngModel"></textarea>
+    </div>
+    <div class="col-3 mb-3">
+      <label for="statut_precedent">Statut du mois précédent : </label>
+      <select [(ngModel)]="projet.statut_precedent" class="form-control" name="statut_precedent" id="statut_precedent" #statut_precedent="ngModel">
+        <option *ngFor="let statut of statuts" value="{{ statut.no_statut }}"> {{ statut.no_statut }} - {{  statut.statut }} </option>
+      </select>
+    </div>
+    <div class="col-8 mb-3">
+      <label for="desc_statut_precedent">Description du statut précédent : </label>
+      <textarea rows="4" name="desc_statut_precedent" id="desc_statut_precedent" class="form-control" [(ngModel)]="projet.desc_statut_precedent" #projet.desc_statut_precedent="ngModel"></textarea>
+    </div>
+    <div class="container text-center mb-5 mt-5">
+      <button class="btn btn-primary mr-2" type="submit">Enregistrer</button>
+      <button type="button" class="btn btn-primary mr-2" (click)="delete()">Supprimer le projet</button>
+      <button type="button" class="btn btn-primary" [routerLink]="['/home']">Annuler</button>
+    </div>
   </form>
 </div>

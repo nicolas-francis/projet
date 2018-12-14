@@ -9,4 +9,10 @@ module.exports = function(app) {
 
     // Delete a project with Id
     app.delete('/api/projets/:id', projets.delete);
+
+    // Retrieve a single Project by Id
+    app.get('/api/projets/:id', projets.findById);
+
+    // Update a Project with Id
+    app.put('/api/projets', projets.update);
 }
