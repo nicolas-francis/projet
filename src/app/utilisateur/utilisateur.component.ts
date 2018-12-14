@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { User } from '../class/user';
 import { UserService } from '../service/user.service';
+import { NavbarService } from '../service/navbar.service';
 
 @Component({
   selector: 'app-utilisateur',
@@ -12,9 +13,11 @@ import { UserService } from '../service/user.service';
 export class UtilisateurComponent implements OnInit {
   users: User[];
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, public nav: NavbarService) { }
 
   ngOnInit() {
+    this.nav.show();
+
     this.getUsers();
   }
 

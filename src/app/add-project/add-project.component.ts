@@ -18,6 +18,7 @@ import { Statut } from '../class/statut';
 import { StatutService } from '../service/statut.service';
 import { Projet } from '../class/projet';
 import { ProjetService } from '../service/projet.service';
+import { NavbarService } from '../service/navbar.service';
 
 @Component({
   selector: 'app-add-project',
@@ -78,10 +79,13 @@ export class AddProjectComponent implements OnInit {
     private StatutService: StatutService,
     private ProjetService: ProjetService,
     private route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    public nav: NavbarService
     ) { }
 
   ngOnInit(): void {
+    this.nav.show();
+
     this.endUrl = window.location.href;
     this.endUrl = this.endUrl.substr(window.location.href.lastIndexOf('/') + 1);
     this.verifNumber = +this.endUrl;
