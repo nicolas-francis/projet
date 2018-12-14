@@ -29,7 +29,7 @@
 <div class="content" *ngIf="updateShow != true">
   <form (ngSubmit)="addProjet()">
     <div class="ml-4">
-      <h4 class="mx-3 pt-5 pb-1">INFORMATION PROJET</h4>
+      <h4 class="mx-3 pt-5 pb-1">Information</h4>
       <div class="col-2 mb-3 mt-3">
         <label for="no_projetIns">Numéro Projet : </label>
         <input type="text" name="no_projetIns" class="form-control" [(ngModel)]="no_projetIns" />
@@ -147,7 +147,7 @@
         <textarea rows="4" name="desc_statut_precedentIns" class="form-control" [(ngModel)]="desc_statut_precedentIns"></textarea>
       </div>
       <div class="container text-center mb-4">
-        <button class="btn btn-primary mr-2" type="submit">Enregistrer</button>
+        <button class="btn btn-primary mr-2" type="submit">Ajouter</button>
         <button type="button" class="btn btn-primary" [routerLink]="['/home']">Annuler</button>
       </div>
     </div>
@@ -272,7 +272,7 @@
     </div>
     <div class="container text-center mb-5 mt-5">
       <button class="btn btn-primary mr-2" type="submit">Enregistrer</button>
-      <button type="button" class="btn btn-primary mr-2" (click)="delete()">Supprimer le projet</button>
+      <button type="button" class="btn btn-primary mr-2" (click)="delete()">Supprimer</button>
       <button type="button" class="btn btn-primary" [routerLink]="['/home']">Annuler</button>
     </div>
   </form>

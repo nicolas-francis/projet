@@ -22,6 +22,16 @@ exports.findUser = (req, res) => {
 	});
 };
 
+//FIND USER BY ID
+exports.findById = (req, res) => {	
+	User.findById(req.params.id).then(user => {
+			res.json(user);
+		}).catch(err => {
+			console.log(err);
+			res.status(500).json({msg: "error", details: err});
+		});
+};
+
 //INSERT USER
 exports.create = (req, res) => {
 	User.create({

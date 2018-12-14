@@ -30,28 +30,11 @@
   </nav>
 </div>
 
-<!-- Ajout d'un nouveau projet -->
-<button type="button" class="btn btn-primary float-right mr-4 mt-4" [routerLink]="['/add']">Nouveau projet</button>
-<div class="container text-center mt-5">
-  <h1>Shawinigan</h1>
-  <p>Gestion des projets</p>
-</div>
-<br>
-
-  <!--
-    VIEILLE FAÇON D'AVOIR TOUS LES PROJETS
-    <select [(ngModel)]="idProjet" class="form-control" name="idProjet">
-      <option *ngFor="let projet of projets" value="{{ projet.id }}"> {{ projet.id }} - {{  projet.no_projet }} </option>
-    </select>
-    <br>
-    <br>
-  -->
-
-  
-  <!-- Ajouter un titre au projet pour une meilleure lecture des données??? -->
+<!-- Liste des utilisateurs -->
 <div class="ml-4">
-  <h4 class="pb-1">Liste des projets</h4>
-  <div *ngFor="let projet of projets ">
-    <span class="badge badge-dark"> {{ projet.id }} </span> -> <a [routerLink]="['/add', projet.id]" style="color:black"> {{ projet.no_projet }} </a>
+  <h4 class="mx-3 pt-5 pb-1">Liste des utilisateurs</h4>
+  <button type="button" class="btn btn-primary float-right mr-4" [routerLink]="['/useradd']">Nouvel utilisateur</button>
+  <div *ngFor="let user of users" class="col-10 mb-3 mt-3">
+    <span class="badge badge-dark"> {{ user.id }} </span> -> <a [routerLink]="['/useradd', user.id]" style="color:black"> {{ user.utilisateur }} - {{ user.mot_de_passe }}</a>
   </div>
 </div>

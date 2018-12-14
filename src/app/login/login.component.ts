@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { User } from '../class/user';
 import { UserService } from '../service/user.service';
-import { interval } from 'rxjs';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +12,11 @@ import { interval } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   users: User[];
-  message: string;
+  public message: string;
   public utilisateur: string;
   public mot_de_passe: string;
   public erreur: string;
-
-  //Variables le timer du message d'erreur
-  timeLeft: number = 15;
-  interval;
+  public time: number;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -44,30 +41,19 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['home']);
       }
       else {
-        this.startTimer();
-        
         this.erreur = "Mauvais utilisateur ou mot de passe";
-        this.utilisateur = "";
-        this.mot_de_passe = "";
+        this.startTimer();
       }
     }
+    this.utilisateur = "";
+    this.mot_de_passe = "";
   }
 
-  //Message d'erreur / Timer
+  //Timer
   startTimer() {
-    this.interval = setInterval(() => {
-      if(this.timeLeft > 0) {
-        this.timeLeft--;
-        this.erreur = "Mauvais utilisateur ou mot de passe";
-      } else {
-        this.pauseTimer();
-        this.erreur = "";
-      }
-    },1000)
+    const source = timer(5000);
+    const subscribe = source.subscribe(
+      time => this.erreur = ""
+      );
   }
-
-  pauseTimer() {
-    clearInterval(this.interval);
-  }
-
 }

@@ -4,6 +4,9 @@ module.exports = function(app) {
     // Retrieve all users
     app.get('/api/users', users.findAll);
 
+    // Retrieve a single User by Id
+    app.get('/api/users/:id', users.findById);
+
     // Create a new user
     app.post('/api/users', users.create);
 
