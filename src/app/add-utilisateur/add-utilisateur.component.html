@@ -1,0 +1,70 @@
+<!-- Navbar-->
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link mr-5" [routerLink]="['/home']">Projet 1</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link mr-5">Projet 2</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link mr-5">Projet 3</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link mr-5">Projet 4</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link mr-5" [routerLink]="['/user']">Utilisateurs</a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" [routerLink]="['/']">Déconnexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- Modifier / Supprimer -->
+<div *ngIf="updateShow">
+  <form class="mx-3 mt-4">
+    <div class="col-3 form-group">
+      <label for="utilisateur">Utilisateur</label>
+      <input type="text" class="form-control" id="utilisateur" required [(ngModel)]="user.utilisateur" name="utilisateur" #utilisateur="ngModel">
+    </div>
+    <div class="col-3 form-group">
+      <label for="mot_de_passe">Mot de passe</label>
+      <input type="text" class="form-control" id="mot_de_passe" required [(ngModel)]="user.mot_de_passe" name="mot_de_passe" #mot_de_passe="ngModel">
+    </div>
+
+    <div class="form-group ml-3 mt-3">
+      <button type="button" class="btn btn-primary mr-3" (click)="update()">Enregistrer</button>
+      <button type="button" class="btn btn-primary mr-3" (click)="delete()">Supprimer</button>
+      <button type="button" class="btn btn-primary mr-3" [routerLink]="['/user']">Annuler</button>
+    </div>
+  </form>
+</div>
+
+<!-- Ajouter -->
+<div *ngIf="updateShow != true">
+  <form class="mx-3 mt-4">
+    <div class="col-3 form-group">
+      <label for="utilisateurIns">Utilisateur</label>
+      <input type="text" class="form-control" id="utilisateurIns" [(ngModel)]="utilisateurIns" name="utilisateurIns">
+    </div>
+    <div class="col-3 form-group">
+      <label for="mot_de_passeIns">Mot de passe</label>
+      <input type="text" class="form-control" id="mot_de_passeIns" [(ngModel)]="mot_de_passeIns" name="mot_de_passeIns">
+    </div>
+
+    <div class="form-group ml-3 mt-3">
+      <button type="button" class="btn btn-primary mr-3" (click)="addUser()">Ajouter</button>
+      <button type="button" class="btn btn-primary mr-3" [routerLink]="['/user']">Annuler</button>
+    </div>
+  </form>
+</div>
