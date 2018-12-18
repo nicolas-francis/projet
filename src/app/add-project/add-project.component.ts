@@ -67,7 +67,6 @@ export class AddProjectComponent implements OnInit {
   public updateShow: boolean = false;
   public verifNumber: number;
   public idProjet: number;
-  message: string;
 
   constructor(
     private ServiceService: ServiceService, 
@@ -224,7 +223,7 @@ export class AddProjectComponent implements OnInit {
 
     console.log(this.projet);
     this.ProjetService.deleteProjet(this.projet)
-        .subscribe(result => this.message = "Project Deleted Successfully!");
+        .subscribe();
 
     window.location.href = "/home";
   }
@@ -232,7 +231,7 @@ export class AddProjectComponent implements OnInit {
   //modifier
   update(): void {
     this.ProjetService.updateProjet(this.projet)
-        .subscribe(result => this.message = "Project Updated Successfully!");
+        .subscribe();
 
     window.location.href = "/home";
   }

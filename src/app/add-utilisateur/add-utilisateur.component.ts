@@ -11,14 +11,23 @@ import { NavbarService } from '../service/navbar.service';
   styleUrls: ['./add-utilisateur.component.css']
 })
 export class AddUtilisateurComponent implements OnInit {
+  //un seul utilisateur avec la structure du module
   user = new User;
 
-  message: string;
+  //variables pour avoir le bon format dans les champs user et MDP
+  public errorUser: boolean = false;
+  public errorPass: boolean = false;
+  public userReg = new RegExp('^[a-zA-Z0-9]');
+  public passReg = new RegExp('^[a-zA-Z0-9+!"/$%?&*()_^¨:`>.~=,éÉ;<>]');
+  public testRegex: boolean;
+
+  //pour faire afficher le formulaire update ou insert
   public endUrl: string;
   public verifNumber: number;
   public updateShow: boolean = false;
   public idUser: number;
 
+  //valeurs des champs du formulaire
   public utilisateurIns: string;
   public mot_de_passeIns: string;
 
@@ -42,10 +51,31 @@ export class AddUtilisateurComponent implements OnInit {
 
   //lis les champs du form avec les champs de la BD
   addUser() {
+    //ajoute les valeurs des champs dans la variable qui est liée au model
     this.user.utilisateur = this.utilisateurIns;
     this.user.mot_de_passe = this.mot_de_passeIns;
 
-    this.save();
+    //validation avec les regex (trouver une meilleure façons pas optimiser?)
+    //validation pour user
+    if (this.userReg.test(this.utilisateurIns) && this.utilisateurIns != null) {
+      this.errorUser = false;
+    }
+    else {
+      this.errorUser = true;
+    }
+
+    //validation pour mot de passe
+    if (this.passReg.test(this.mot_de_passeIns) && this.mot_de_passeIns != null) {
+      this.errorPass = false;
+    }
+    else {
+      this.errorPass = true;
+    }
+
+    //enregistrement dans la BD si les conditions plus haut sont OK
+    if (this.errorUser == false && this.errorPass == false) {
+      this.save();
+    }
   }
 
   //enregistrer les données dans la table
@@ -64,17 +94,38 @@ export class AddUtilisateurComponent implements OnInit {
 
     console.log(this.user);
     this.userService.deleteUser(this.user)
-        .subscribe(result => this.message = "User Deleted Successfully!");
+        .subscribe();
 
     window.location.href = "/user";
   }
 
   //modifier
   update(): void {
-    this.userService.updateUser(this.user)
-        .subscribe(result => this.message = "User Updated Successfully!");
+    //validation avec les regex (trouver une meilleure façons plus optimiser ou peut être une version avec angular?)
+    //validation pour user
+    if (this.userReg.test(this.user.utilisateur) && this.user.utilisateur != null) {
+      this.errorUser = false;
+    }
+    else {
+      this.errorUser = true;
+    }
 
-    window.location.href = "/user";
+    //validation pour mot de passe
+    if (this.passReg.test(this.user.mot_de_passe) && this.user.mot_de_passe != null) {
+      this.errorPass = false;
+    }
+    else {
+      this.errorPass = true;
+    }
+
+    //enregistrement dans la BD si les conditions plus haut sont OK
+    if (this.errorUser == false && this.errorPass == false) {
+      this.userService.updateUser(this.user)
+        .subscribe();
+
+      window.location.href = "/user";
+    }
+
   }
 
 }

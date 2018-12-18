@@ -35,11 +35,13 @@
   <form class="mx-3 mt-4">
     <div class="col-3 form-group">
       <label for="utilisateur">Utilisateur</label>
-      <input type="text" class="form-control" id="utilisateur" required [(ngModel)]="user.utilisateur" name="utilisateur" #utilisateur="ngModel">
+      <input type="text" class="form-control" id="utilisateur" required [(ngModel)]="user.utilisateur" name="utilisateur" #utilisateur="ngModel" [ngClass]="{'is-invalid': errorUser}">
+      <div *ngIf="errorUser" style="color: red">Le nom d'utilisateur est invalide</div>
     </div>
     <div class="col-3 form-group">
       <label for="mot_de_passe">Mot de passe</label>
-      <input type="text" class="form-control" id="mot_de_passe" required [(ngModel)]="user.mot_de_passe" name="mot_de_passe" #mot_de_passe="ngModel">
+      <input type="text" class="form-control" id="mot_de_passe" required [(ngModel)]="user.mot_de_passe" name="mot_de_passe" #mot_de_passe="ngModel" [ngClass]="{'is-invalid': errorPass}">
+      <div *ngIf="errorPass" style="color: red">Le mot de passe est invalide</div>
     </div>
 
     <div class="form-group ml-3 mt-3">
@@ -55,11 +57,13 @@
   <form class="mx-3 mt-4">
     <div class="col-3 form-group">
       <label for="utilisateurIns">Utilisateur</label>
-      <input type="text" class="form-control" id="utilisateurIns" [(ngModel)]="utilisateurIns" name="utilisateurIns">
+      <input type="text" class="form-control" id="utilisateurIns" [(ngModel)]="utilisateurIns" name="utilisateurIns" [ngClass]="{'is-invalid': errorUser}" >
+      <div *ngIf="errorUser" style="color: red">Le nom d'utilisateur est invalide</div>
     </div>
     <div class="col-3 form-group">
       <label for="mot_de_passeIns">Mot de passe</label>
-      <input type="text" class="form-control" id="mot_de_passeIns" [(ngModel)]="mot_de_passeIns" name="mot_de_passeIns">
+      <input type="text" class="form-control" id="mot_de_passeIns" [(ngModel)]="mot_de_passeIns" name="mot_de_passeIns" [ngClass]="{'is-invalid': errorPass}" >
+      <div *ngIf="errorPass" style="color: red">Le mot de passe est invalide</div>
     </div>
 
     <div class="form-group ml-3 mt-3">
