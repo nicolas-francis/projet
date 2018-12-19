@@ -17,9 +17,8 @@ export class AddUtilisateurComponent implements OnInit {
   //variables pour avoir le bon format dans les champs user et MDP
   public errorUser: boolean = false;
   public errorPass: boolean = false;
-  public userReg = new RegExp('^[a-zA-Z0-9]');
-  public passReg = new RegExp('^[a-zA-Z0-9+!"/$%?&*()_^¨:`>.~=,éÉ;<>]');
-  public testRegex: boolean;
+  public userReg = new RegExp('[^a-zA-Z0-9]');
+  public passReg = new RegExp('[^a-zA-Z0-9+!"%?&*()_¨:`>.~=,éÉ;<>$]');
 
   //pour faire afficher le formulaire update ou insert
   public endUrl: string;
@@ -55,27 +54,25 @@ export class AddUtilisateurComponent implements OnInit {
     this.user.utilisateur = this.utilisateurIns;
     this.user.mot_de_passe = this.mot_de_passeIns;
 
-    //validation avec les regex (trouver une meilleure façons pas optimiser?)
-    //validation pour user
-    if (this.userReg.test(this.utilisateurIns) && this.utilisateurIns != null) {
+    if (this.userReg.test(this.utilisateurIns) == false && this.utilisateurIns != null && this.utilisateurIns != "") {
       this.errorUser = false;
-    }
-    else {
-      this.errorUser = true;
-    }
+      }
+      else {
+        this.errorUser = true;
+      }
 
-    //validation pour mot de passe
-    if (this.passReg.test(this.mot_de_passeIns) && this.mot_de_passeIns != null) {
-      this.errorPass = false;
-    }
-    else {
-      this.errorPass = true;
-    }
+      //validation pour mot de passe
+      if (this.passReg.test(this.mot_de_passeIns) == false && this.mot_de_passeIns != null && this.mot_de_passeIns != "") {
+        this.errorPass = false;
+      }
+      else {
+        this.errorPass = true;
+      }
 
-    //enregistrement dans la BD si les conditions plus haut sont OK
-    if (this.errorUser == false && this.errorPass == false) {
-      this.save();
-    }
+      //enregistrement dans la BD si les conditions plus haut sont OK
+      if (this.errorUser == false && this.errorPass == false) {
+        this.save();
+      }
   }
 
   //enregistrer les données dans la table
@@ -103,7 +100,7 @@ export class AddUtilisateurComponent implements OnInit {
   update(): void {
     //validation avec les regex (trouver une meilleure façons plus optimiser ou peut être une version avec angular?)
     //validation pour user
-    if (this.userReg.test(this.user.utilisateur) && this.user.utilisateur != null) {
+    if (this.userReg.test(this.user.utilisateur) == false && this.user.utilisateur != null && this.user.utilisateur != "") {
       this.errorUser = false;
     }
     else {
@@ -111,7 +108,7 @@ export class AddUtilisateurComponent implements OnInit {
     }
 
     //validation pour mot de passe
-    if (this.passReg.test(this.user.mot_de_passe) && this.user.mot_de_passe != null) {
+    if (this.passReg.test(this.user.mot_de_passe) == false && this.user.mot_de_passe != null && this.user.mot_de_passe != "") {
       this.errorPass = false;
     }
     else {
@@ -127,5 +124,4 @@ export class AddUtilisateurComponent implements OnInit {
     }
 
   }
-
 }

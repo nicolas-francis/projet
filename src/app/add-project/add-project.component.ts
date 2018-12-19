@@ -62,11 +62,18 @@ export class AddProjectComponent implements OnInit {
   public suivi_parIns: string;
   public date_echeance_reviseeIns: Date;
 
-  //autres variables
+  //pour faire afficher le formulaire update ou insert
   public endUrl: string;
   public updateShow: boolean = false;
   public verifNumber: number;
   public idProjet: number;
+
+   //variables pour avoir le bon format dans les champs user et MDP
+   public errorUser: boolean = false;
+   public errorPass: boolean = false;
+   public userReg = new RegExp('^[a-zA-Z0-9]');
+   public passReg = new RegExp('^[a-zA-Z0-9+!"/$%?&*()_^¨:`>.~=,éÉ;<>]');
+   public testRegex: boolean;
 
   constructor(
     private ServiceService: ServiceService, 
