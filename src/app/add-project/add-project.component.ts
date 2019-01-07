@@ -68,12 +68,9 @@ export class AddProjectComponent implements OnInit {
   public verifNumber: number;
   public idProjet: number;
 
-   //variables pour avoir le bon format dans les champs user et MDP
-   public errorUser: boolean = false;
-   public errorPass: boolean = false;
-   public userReg = new RegExp('^[a-zA-Z0-9]');
-   public passReg = new RegExp('^[a-zA-Z0-9+!"/$%?&*()_^¨:`>.~=,éÉ;<>]');
-   public testRegex: boolean;
+   //variables pour avoir les bons format dans chaque champs
+   public errorNoProjet: boolean = false;
+   public lettreChiffreReg = new RegExp('[^A-Z]{2}-[0-9]{3}');
 
   constructor(
     private ServiceService: ServiceService, 
@@ -211,7 +208,18 @@ export class AddProjectComponent implements OnInit {
     this.projet.suivi_par = this.suivi_parIns;
     this.projet.date_echeance_revisee = this.date_echeance_reviseeIns;
 
-    this.save();
+    //validation pour le numéro du projet
+    if (this.lettreChiffreReg.test(this.no_projetIns) == false && this.no_projetIns != null && this.no_projetIns != "") {
+      this.errorNoProjet = false;
+    }
+    else {
+      this.errorNoProjet = true;
+    }
+
+    //enregistrement dans la BD si les conditions plus haut sont OK
+    if (this.errorNoProjet == false && this.errorNoProjet == false) {
+      this.save();
+    }
   }
 
   //enregistrer les données dans la table

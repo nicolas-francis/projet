@@ -49,9 +49,9 @@
 
   
   <!-- Ajouter un titre au projet pour une meilleure lecture des données??? -->
-<div class="ml-4">
+<div class="ml-4 mb-5">
   <h4 class="pb-1">Liste des projets</h4>
-  <div *ngFor="let projet of projets ">
+  <div *ngFor="let projet of projets">
     <span class="badge badge-dark"> {{ projet.id }} </span> -> <a [routerLink]="['/add', projet.id]" style="color:black"> {{ projet.no_projet }} </a>
   </div>
 </div>

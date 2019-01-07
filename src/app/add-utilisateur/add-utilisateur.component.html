@@ -33,7 +33,7 @@
 <!-- Modifier / Supprimer -->
 <div *ngIf="updateShow">
   <form class="mx-3 mt-4">
-    <div class="col-3 form-group">
+    <div class="col-9 form-group">
       <label for="utilisateur">Utilisateur</label>
       <div class="form-inline">
         <input type="text" class="form-control" id="utilisateur" [(ngModel)]="user.utilisateur" name="utilisateur" #utilisateur="ngModel" [ngClass]="{'is-invalid': errorUser}">
@@ -42,7 +42,7 @@
       </div>
       <small *ngIf="errorUser" style="color: red">Le nom d'utilisateur est invalide</small>
     </div>
-    <div class="col-3 form-group">
+    <div class="col-9 form-group">
       <label for="mot_de_passe">Mot de passe</label>
       <div class="form-inline">
         <input type="text" class="form-control" id="mot_de_passe" [(ngModel)]="user.mot_de_passe" name="mot_de_passe" #mot_de_passe="ngModel" [ngClass]="{'is-invalid': errorPass}">
@@ -63,7 +63,7 @@
 <!-- Ajouter -->
 <div *ngIf="updateShow != true">
   <form class="mx-3 mt-4">
-    <div class="col-3 form-group">
+    <div class="col-9 form-group">
       <label for="utilisateurIns">Utilisateur</label>
       <div class="form-inline">
         <input type="text" class="form-control" id="utilisateurIns" [(ngModel)]="utilisateurIns" name="utilisateurIns" [ngClass]="{'is-invalid': errorUser}" >
@@ -72,7 +72,7 @@
       </div>
       <small *ngIf="errorUser" style="color: red">Le nom d'utilisateur est invalide</small>
     </div>
-    <div class="col-3 form-group">
+    <div class="col-9 form-group">
       <label for="mot_de_passeIns">Mot de passe</label>
       <div class="form-inline">
         <input type="text" class="form-control" id="mot_de_passeIns" [(ngModel)]="mot_de_passeIns" name="mot_de_passeIns" [ngClass]="{'is-invalid': errorPass}" >

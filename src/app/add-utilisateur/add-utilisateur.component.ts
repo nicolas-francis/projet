@@ -54,25 +54,26 @@ export class AddUtilisateurComponent implements OnInit {
     this.user.utilisateur = this.utilisateurIns;
     this.user.mot_de_passe = this.mot_de_passeIns;
 
+    //validation pour l'utilisateur
     if (this.userReg.test(this.utilisateurIns) == false && this.utilisateurIns != null && this.utilisateurIns != "") {
       this.errorUser = false;
-      }
-      else {
-        this.errorUser = true;
-      }
+    }
+    else {
+      this.errorUser = true;
+    }
 
-      //validation pour mot de passe
-      if (this.passReg.test(this.mot_de_passeIns) == false && this.mot_de_passeIns != null && this.mot_de_passeIns != "") {
-        this.errorPass = false;
-      }
-      else {
-        this.errorPass = true;
-      }
+    //validation pour mot de passe
+    if (this.passReg.test(this.mot_de_passeIns) == false && this.mot_de_passeIns != null && this.mot_de_passeIns != "") {
+      this.errorPass = false;
+    }
+    else {
+      this.errorPass = true;
+    }
 
-      //enregistrement dans la BD si les conditions plus haut sont OK
-      if (this.errorUser == false && this.errorPass == false) {
-        this.save();
-      }
+    //enregistrement dans la BD si les conditions plus haut sont OK
+    if (this.errorUser == false && this.errorPass == false) {
+      this.save();
+    }
   }
 
   //enregistrer les données dans la table
