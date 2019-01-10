@@ -12,7 +12,7 @@ import { timer } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   users: User[];
-  public message: string;
+  
   public utilisateur: string;
   public mot_de_passe: string;
   public erreur: string;

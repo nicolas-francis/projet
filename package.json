@@ -26,6 +26,7 @@
     "pg": "^7.6.1",
     "rxjs": "~6.2.0",
     "sequelize": "^4.41.2",
+    "webpack-dev-server": "^3.1.14",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

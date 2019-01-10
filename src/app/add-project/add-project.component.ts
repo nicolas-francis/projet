@@ -62,12 +62,15 @@ export class AddProjectComponent implements OnInit {
   public suivi_parIns: string;
   public date_echeance_reviseeIns: Date;
 
-  //autres variables
+  //pour faire afficher le formulaire update ou insert
   public endUrl: string;
   public updateShow: boolean = false;
   public verifNumber: number;
   public idProjet: number;
-  message: string;
+
+   //variables pour avoir les bons format dans chaque champs
+   public errorNoProjet: boolean = false;
+   public lettreChiffreReg = new RegExp('[^A-Z]{2}-[0-9]{3}');
 
   constructor(
     private ServiceService: ServiceService, 
@@ -205,7 +208,18 @@ export class AddProjectComponent implements OnInit {
     this.projet.suivi_par = this.suivi_parIns;
     this.projet.date_echeance_revisee = this.date_echeance_reviseeIns;
 
-    this.save();
+    //validation pour le numéro du projet
+    if (this.lettreChiffreReg.test(this.no_projetIns) == false && this.no_projetIns != null && this.no_projetIns != "") {
+      this.errorNoProjet = false;
+    }
+    else {
+      this.errorNoProjet = true;
+    }
+
+    //enregistrement dans la BD si les conditions plus haut sont OK
+    if (this.errorNoProjet == false && this.errorNoProjet == false) {
+      this.save();
+    }
   }
 
   //enregistrer les données dans la table
@@ -224,7 +238,7 @@ export class AddProjectComponent implements OnInit {
 
     console.log(this.projet);
     this.ProjetService.deleteProjet(this.projet)
-        .subscribe(result => this.message = "Project Deleted Successfully!");
+        .subscribe();
 
     window.location.href = "/home";
   }
@@ -232,7 +246,7 @@ export class AddProjectComponent implements OnInit {
   //modifier
   update(): void {
     this.ProjetService.updateProjet(this.projet)
-        .subscribe(result => this.message = "Project Updated Successfully!");
+        .subscribe();
 
     window.location.href = "/home";
   }
