@@ -88,13 +88,15 @@ export class AddUtilisateurComponent implements OnInit {
 
   //Supprimer
   delete(): void {
-    this.idUser = +this.endUrl;
+    if (confirm("Voulez-vous supprimer l'utilisateur?")) {
+      this.idUser = +this.endUrl;
+      console.log(this.user);
 
-    console.log(this.user);
-    this.userService.deleteUser(this.user)
-        .subscribe();
+      this.userService.deleteUser(this.user)
+          .subscribe();
 
-    window.location.href = "/user";
+      window.location.href = "/user";
+    }
   }
 
   //modifier
