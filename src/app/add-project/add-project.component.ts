@@ -68,9 +68,16 @@ export class AddProjectComponent implements OnInit {
   public verifNumber: number;
   public idProjet: number;
 
-   //variables pour avoir les bons format dans chaque champs
-   public errorNoProjet: boolean = false;
-   public lettreChiffreReg = new RegExp('[^A-Z]{2}-[0-9]{3}');
+  //variables pour avoir les bons format dans chaque champs
+  //un regex par champ pour plus de flexibilité si les champs change de règle plus tard
+  public errorNoProjet: boolean = false;
+  public noProjetReg = new RegExp('[A-Z]{2}-[0-9]{3}$');
+  public errorPrioriteServ: boolean = false;
+  public prioServReg = new RegExp('^-[0-9]');
+  public errorPTI: boolean = false;
+  public PTIReg = new RegExp('^-[0-9]');
+  public errorNoFinancement: boolean = false;
+  public NoFinancementReg = new RegExp('^-[0-9]');
 
   constructor(
     private ServiceService: ServiceService, 
@@ -208,16 +215,41 @@ export class AddProjectComponent implements OnInit {
     this.projet.suivi_par = this.suivi_parIns;
     this.projet.date_echeance_revisee = this.date_echeance_reviseeIns;
 
+    //VALIDATION
     //validation pour le numéro du projet
-    if (this.lettreChiffreReg.test(this.no_projetIns) == false && this.no_projetIns != null && this.no_projetIns != "") {
+    if (this.noProjetReg.test(this.no_projetIns) == true && this.no_projetIns != null && this.no_projetIns != " ") {
       this.errorNoProjet = false;
     }
     else {
       this.errorNoProjet = true;
     }
 
+    //validation pour la priorité de service
+    if (this.prioServReg.test(this.priorite_serviceIns) != true) {
+      this.errorPrioriteServ = false;
+    }
+    else {
+      this.errorPrioriteServ = true;
+    }
+
+    //validation pour le PTI
+    if (this.PTIReg.test(this.no_ptiIns) != true) {
+      this.errorPTI = false;
+    }
+    else {
+      this.errorPTI = true;
+    }
+
+    //validation pour le numéro de financement
+    if (this.NoFinancementReg.test(this.no_financementIns) != true) {
+      this.errorNoFinancement = false;
+    }
+    else {
+      this.errorNoFinancement = true;
+    }
+    
     //enregistrement dans la BD si les conditions plus haut sont OK
-    if (this.errorNoProjet == false && this.errorNoProjet == false) {
+    if (this.errorNoProjet == false && this.errorPrioriteServ == false && this.errorPTI == false && this.errorNoFinancement == false) {
       this.save();
     }
   }
@@ -234,21 +266,60 @@ export class AddProjectComponent implements OnInit {
 
   //Supprimer
   delete(): void {
-    this.idProjet = +this.endUrl;
+    if (confirm("Voulez-vous supprimer le projet?")) {
+      this.idProjet = +this.endUrl;
+      console.log(this.projet);
 
-    console.log(this.projet);
-    this.ProjetService.deleteProjet(this.projet)
+      this.ProjetService.deleteProjet(this.projet)
         .subscribe();
 
-    window.location.href = "/home";
+      window.location.href = "/home";
+    }
+    
   }
 
   //modifier
   update(): void {
-    this.ProjetService.updateProjet(this.projet)
+    //VALIDATION
+    //validation pour le numéro du projet
+    if (this.noProjetReg.test(this.projet.no_projet) == true && this.projet.no_projet != null && this.projet.no_projet != " ") {
+      this.errorNoProjet = false;
+    }
+    else {
+      this.errorNoProjet = true;
+    }
+
+    //validation pour la priorité de service
+    if (this.prioServReg.test(this.projet.priorite_service) != true) {
+      this.errorPrioriteServ = false;
+    }
+    else {
+      this.errorPrioriteServ = true;
+    }
+
+    //validation pour le PTI
+    if (this.PTIReg.test(this.projet.no_pti) != true) {
+      this.errorPTI = false;
+    }
+    else {
+      this.errorPTI = true;
+    }
+
+    //validation pour le numéro de financement
+    if (this.NoFinancementReg.test(this.projet.no_financement) != true) {
+      this.errorNoFinancement = false;
+    }
+    else {
+      this.errorNoFinancement = true;
+    }
+
+    //enregistrer les données dans la table
+    if (this.errorNoProjet == false && this.errorPrioriteServ == false && this.errorPTI == false && this.errorNoFinancement == false) {
+      this.ProjetService.updateProjet(this.projet)
         .subscribe();
 
-    window.location.href = "/home";
+      window.location.href = "/home";
+    }
   }
 
 }
