@@ -261,7 +261,9 @@ export class AddProjectComponent implements OnInit {
     this.ProjetService.addProjet(this.projet)
         .subscribe();
 
-    window.location.href = "/home";
+    window.setTimeout(function() {
+      window.location.href = "/home";
+    }, 0);
   }
 
   //Supprimer
@@ -272,10 +274,11 @@ export class AddProjectComponent implements OnInit {
 
       this.ProjetService.deleteProjet(this.projet)
         .subscribe();
-
-      window.location.href = "/home";
+      
+      window.setTimeout(function() {
+        window.location.href = "/home";
+      }, 0);
     }
-    
   }
 
   //modifier
@@ -315,10 +318,14 @@ export class AddProjectComponent implements OnInit {
 
     //enregistrer les données dans la table
     if (this.errorNoProjet == false && this.errorPrioriteServ == false && this.errorPTI == false && this.errorNoFinancement == false) {
+      console.log(this.projet);
+
       this.ProjetService.updateProjet(this.projet)
         .subscribe();
 
-      window.location.href = "/home";
+      window.setTimeout(function() {
+        window.location.href = "/home";
+      }, 0);
     }
   }
 
