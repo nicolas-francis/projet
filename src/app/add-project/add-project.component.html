@@ -83,21 +83,22 @@
       <div class="col-9 mb-3">
         <label for="priorite_serviceIns">Priorité de service : </label>
         <div class="form-inline">
-          <input type="number" name="priorite_serviceIns" class="form-control" [(ngModel)]="priorite_serviceIns" onkeydown="javascript: return event.keyCode >= 97 && event.keyCode <= 105 || event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 8 || event.keyCode == 13 ? true : false" />
+          <p-spinner name="priorite_serviceIns" [(ngModel)]="priorite_serviceIns" [min]="0" [max]="100"></p-spinner>
           <img (mouseover)="infoPrioServText=true" (mouseout)="infoPrioServText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
           <span *ngIf="infoPrioServText">Seulement des chiffres et aucun négatif</span>
         </div>
         <small *ngIf="errorPrioriteServ" style="color: red">La priorité de service est invalide</small>
       </div>
-      <div class="col-3 mb-3">
+      <div class="col-5 mb-3">
         <label for="date_echeanceIns">Date d'échéance : </label>
-        <input type="date" name="date_echeanceIns" class="form-control" [(ngModel)]="date_echeanceIns" />
+        <br> <!-- Pour IE (ne saute pas de ligne) -->
+        <p-calendar name="date_echeanceIns" [(ngModel)]="date_echeanceIns" dateFormat="yy-mm-dd"></p-calendar>
       </div>
       <div class="col-5">
         <label for="date_echeance_reviseeIns">Date d'échéance révisée : </label>
       </div>
       <div class="col-3 mb-3">
-        <input type="date" name="date_echeance_reviseeIns" class="form-control" [(ngModel)]="date_echeance_reviseeIns" />
+        <p-calendar name="date_echeance_reviseeIns" [(ngModel)]="date_echeance_reviseeIns" dateFormat="yy-mm-dd"></p-calendar>
       </div>
       <div class="col-5 mb-3">
         <label for="priorite_strategiqueIns">Priorité Stratégique : </label>
@@ -120,7 +121,7 @@
       <div class="col-9 mb-3">
         <label for="no_ptiIns">Numéro PTI : </label>
         <div class="form-inline">
-          <input type="number" name="no_ptiIns" class="form-control" [(ngModel)]="no_ptiIns" onkeydown="javascript: return event.keyCode >= 97 && event.keyCode <= 105 || event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 8 || event.keyCode == 13 ? true : false" />
+          <p-spinner name="no_ptiIns" [(ngModel)]="no_ptiIns" [min]="0" [max]="100"></p-spinner>
           <img (mouseover)="infoPTIText=true" (mouseout)="infoPTIText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
           <span *ngIf="infoPTIText">Seulement des chiffres et aucun négatif</span>
         </div>
@@ -129,7 +130,7 @@
       <div class="col-9 mb-3">
         <label for="no_financementIns">Numéro financement : </label>
         <div class="form-inline">
-          <input type="number" name="no_financementIns" class="form-control" [(ngModel)]="no_financementIns" onkeydown="javascript: return event.keyCode >= 97 && event.keyCode <= 105 || event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 8 || event.keyCode == 13 ? true : false" />
+          <p-spinner name="no_financementIns" [(ngModel)]="no_financementIns" [min]="0" [max]="100"></p-spinner>
           <img (mouseover)="infoFinancementText=true" (mouseout)="infoFinancementText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
           <span *ngIf="infoFinancementText">Seulement des chiffres et aucun négatif</span>
         </div>
@@ -228,19 +229,21 @@
     <div class="col-9 mb-3">
       <label for="priorite_service">Priorité de service : </label>
       <div class="form-inline">
-        <input type="number" name="priorite_service" class="form-control" [(ngModel)]="projet.priorite_service" onkeydown="javascript: return event.keyCode >= 97 && event.keyCode <= 105 || event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 8 || event.keyCode == 13 ? true : false" />
+        <p-spinner name="priorite_service" [(ngModel)]="projet.priorite_service" [min]="0" [max]="100"></p-spinner>
         <img (mouseover)="infoPrioServText=true" (mouseout)="infoPrioServText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
         <span *ngIf="infoPrioServText">Seulement des chiffres et aucun négatif</span>
       </div>
       <small *ngIf="errorPrioriteServ" style="color: red">La priorité de service est invalide</small>
     </div>
-    <div class="col-3 mb-3">
+    <div class="col-5 mb-3">
       <label for="date_echeance">Date d'échéance : </label>
-      <input type="date" name="date_echeance" id="date_echeance" class="form-control" [(ngModel)]="projet.date_echeance"  #date_echeance="ngModel" />
+      <br> <!-- Pour IE (ne saute pas de ligne) -->
+      <p-calendar name="date_echeance" [(ngModel)]="projet.date_echeance" dateFormat="yy-mm-dd" #date_echeance="ngModel"></p-calendar>
     </div>
-    <div class="col-3 mb-3">
+    <div class="col-5 mb-3">
       <label for="date_echeance_revisee">Date d'échéance révisée : </label>
-      <input type="date" name="date_echeance_revisee" id="date_echeance_revisee" class="form-control" [(ngModel)]="projet.date_echeance_revisee"  #date_echeance_revisee="ngModel" />
+      <br> <!-- Pour IE (ne saute pas de ligne) -->
+      <p-calendar name="date_echeance_revisee" [(ngModel)]="projet.date_echeance_revisee" dateFormat="yy-mm-dd" #date_echeance_revisee="ngModel"></p-calendar>
     </div>
     <div class="col-5 mb-3">
       <label for="priorite_strategique">Priorité stratégique : </label>
@@ -263,7 +266,7 @@
     <div class="col-9 mb-3">
       <label for="no_pti">Numéro PTI : </label>
       <div class="form-inline">
-        <input type="number" name="no_pti" class="form-control" [(ngModel)]="projet.no_pti" onkeydown="javascript: return event.keyCode >= 97 && event.keyCode <= 105 || event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 8 || event.keyCode == 13 ? true : false" />
+        <p-spinner name="no_pti" [(ngModel)]="projet.no_pti" [min]="0" [max]="100"></p-spinner>
         <img (mouseover)="infoPTIText=true" (mouseout)="infoPTIText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
         <span *ngIf="infoPTIText">Seulement des chiffres et aucun négatif</span>
       </div>
@@ -272,7 +275,7 @@
     <div class="col-9 mb-3">
       <label for="no_financement">Numéro financement : </label>
       <div class="form-inline">
-        <input type="number" name="no_financement" class="form-control" [(ngModel)]="projet.no_financement" onkeydown="javascript: return event.keyCode >= 97 && event.keyCode <= 105 || event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 8 || event.keyCode == 13 ? true : false" />
+        <p-spinner name="no_financement" [(ngModel)]="projet.no_financement" [min]="0" [max]="100"></p-spinner>
         <img (mouseover)="infoFinancementText=true" (mouseout)="infoFinancementText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
         <span *ngIf="infoFinancementText">Seulement des chiffres et aucun négatif</span>
       </div>

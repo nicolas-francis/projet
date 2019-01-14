@@ -69,7 +69,6 @@ export class AddProjectComponent implements OnInit {
   public idProjet: number;
 
   //variables pour avoir les bons format dans chaque champs
-  //un regex par champ pour plus de flexibilité si les champs change de règle plus tard
   public errorNoProjet: boolean = false;
   public noProjetReg = new RegExp('[A-Z]{2}-[0-9]{3}$');
   public errorPrioriteServ: boolean = false;

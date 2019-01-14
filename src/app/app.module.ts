@@ -4,6 +4,10 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CalendarModule } from 'primeng/calendar';
+import { SpinnerModule } from 'primeng/spinner';
+import { PasswordModule } from 'primeng/password';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home/home.component';
 import { AddProjectComponent } from './add-project/add-project.component';
@@ -24,7 +28,11 @@ import { AddUtilisateurComponent } from './add-utilisateur/add-utilisateur.compo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CalendarModule,
+    SpinnerModule,
+    PasswordModule
   ],
   providers: [],
   bootstrap: [AppComponent]
