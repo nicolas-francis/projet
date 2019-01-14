@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { CalendarModule } from 'primeng/calendar';
 import { SpinnerModule } from 'primeng/spinner';
 import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home/home.component';
@@ -32,7 +34,9 @@ import { AddUtilisateurComponent } from './add-utilisateur/add-utilisateur.compo
     BrowserAnimationsModule,
     CalendarModule,
     SpinnerModule,
-    PasswordModule
+    PasswordModule,
+    InputTextModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

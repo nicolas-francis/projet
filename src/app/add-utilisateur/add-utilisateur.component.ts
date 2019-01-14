@@ -86,7 +86,7 @@ export class AddUtilisateurComponent implements OnInit {
     
     window.setTimeout(function() {
       window.location.href = "/user";
-    }, 1);
+    }, 500);
     
   }
 
@@ -101,7 +101,7 @@ export class AddUtilisateurComponent implements OnInit {
 
       window.setTimeout(function() {
         window.location.href = "/user";
-      }, 1);
+      }, 500);
     }
   }
 
@@ -131,7 +131,7 @@ export class AddUtilisateurComponent implements OnInit {
 
       window.setTimeout(function() {
         window.location.href = "/user";
-      }, 1);
+      }, 500);
     }
 
   }

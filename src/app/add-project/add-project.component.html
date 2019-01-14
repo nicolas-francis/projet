@@ -63,6 +63,12 @@
         <select [(ngModel)]="code_serviceIns" class="form-control" name="code_serviceIns">
           <option *ngFor="let service of services" value="{{ service.code_service }}"> {{ service.code_service }} - {{  service.desc_service }} </option>
         </select>
+        <!-- 
+        Meilleur dropdown mais peut seulement afficher une valeur et retourner la même valeur.
+        Changer partout si pas besoin de plusieurs valeurs (à vérifier)
+
+        <p-dropdown name="code_serviceIns" [options]="services" [(ngModel)]="code_serviceIns" placeholder="Choisir un service" optionLabel="code_service" [showClear]="true"></p-dropdown>
+        -->
       </div>
       <div class="col-2 mb-3">
         <label for="partenaireIns">Partenaire : </label>
@@ -87,7 +93,6 @@
           <img (mouseover)="infoPrioServText=true" (mouseout)="infoPrioServText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
           <span *ngIf="infoPrioServText">Seulement des chiffres et aucun négatif</span>
         </div>
-        <small *ngIf="errorPrioriteServ" style="color: red">La priorité de service est invalide</small>
       </div>
       <div class="col-5 mb-3">
         <label for="date_echeanceIns">Date d'échéance : </label>
@@ -121,20 +126,18 @@
       <div class="col-9 mb-3">
         <label for="no_ptiIns">Numéro PTI : </label>
         <div class="form-inline">
-          <p-spinner name="no_ptiIns" [(ngModel)]="no_ptiIns" [min]="0" [max]="100"></p-spinner>
+          <p-spinner name="no_ptiIns" [(ngModel)]="no_ptiIns" [min]="0" [max]="999999"></p-spinner>
           <img (mouseover)="infoPTIText=true" (mouseout)="infoPTIText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
           <span *ngIf="infoPTIText">Seulement des chiffres et aucun négatif</span>
         </div>
-        <small *ngIf="errorPTI" style="color: red">Le numéro PTI est invalide</small>
       </div>
       <div class="col-9 mb-3">
         <label for="no_financementIns">Numéro financement : </label>
         <div class="form-inline">
-          <p-spinner name="no_financementIns" [(ngModel)]="no_financementIns" [min]="0" [max]="100"></p-spinner>
+          <p-spinner name="no_financementIns" [(ngModel)]="no_financementIns" [min]="0" [max]="999999"></p-spinner>
           <img (mouseover)="infoFinancementText=true" (mouseout)="infoFinancementText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
           <span *ngIf="infoFinancementText">Seulement des chiffres et aucun négatif</span>
         </div>
-        <small *ngIf="errorNoFinancement" style="color: red">Le numéro de financement est invalide</small>
       </div>
       <div class="col-2 mb-3">
         <label for="code_budgetaireIns">Code budgétaire : </label>
@@ -192,7 +195,6 @@
         <img (mouseover)="infoNoProjText=true" (mouseout)="infoNoProjText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
         <span *ngIf="infoNoProjText">Ex. : CO-001</span>
       </div>
-      <small *ngIf="errorNoProjet" style="color: red">Le numéro du projet est invalide</small>
     </div>
     <div class="col-5 mb-3">
       <label for="titre_projet">Titre du Projet : </label>
@@ -233,7 +235,6 @@
         <img (mouseover)="infoPrioServText=true" (mouseout)="infoPrioServText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
         <span *ngIf="infoPrioServText">Seulement des chiffres et aucun négatif</span>
       </div>
-      <small *ngIf="errorPrioriteServ" style="color: red">La priorité de service est invalide</small>
     </div>
     <div class="col-5 mb-3">
       <label for="date_echeance">Date d'échéance : </label>
@@ -270,7 +271,6 @@
         <img (mouseover)="infoPTIText=true" (mouseout)="infoPTIText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
         <span *ngIf="infoPTIText">Seulement des chiffres et aucun négatif</span>
       </div>
-      <small *ngIf="errorPTI" style="color: red">Le numéro PTI est invalide</small>
     </div>
     <div class="col-9 mb-3">
       <label for="no_financement">Numéro financement : </label>
@@ -279,7 +279,6 @@
         <img (mouseover)="infoFinancementText=true" (mouseout)="infoFinancementText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
         <span *ngIf="infoFinancementText">Seulement des chiffres et aucun négatif</span>
       </div>
-      <small *ngIf="errorNoFinancement" style="color: red">Le numéro de financement est invalide</small>
     </div>
     <div class="col-2 mb-3">
       <label for="code_budgetaire">Code budgétaire : </label>
