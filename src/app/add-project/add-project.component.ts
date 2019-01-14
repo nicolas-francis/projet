@@ -263,7 +263,7 @@ export class AddProjectComponent implements OnInit {
 
     window.setTimeout(function() {
       window.location.href = "/home";
-    }, 0);
+    }, 1);
   }
 
   //Supprimer
@@ -277,7 +277,7 @@ export class AddProjectComponent implements OnInit {
       
       window.setTimeout(function() {
         window.location.href = "/home";
-      }, 0);
+      }, 1);
     }
   }
 
@@ -325,7 +325,7 @@ export class AddProjectComponent implements OnInit {
 
       window.setTimeout(function() {
         window.location.href = "/home";
-      }, 0);
+      }, 1);
     }
   }
 

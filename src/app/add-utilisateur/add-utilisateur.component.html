@@ -32,7 +32,7 @@
 
 <!-- Modifier / Supprimer -->
 <div *ngIf="updateShow">
-  <form class="mx-3 mt-4">
+  <form (ngSubmit)="update()" class="mx-3 mt-4">
     <div class="col-9 form-group">
       <label for="utilisateur">Utilisateur</label>
       <div class="form-inline">
@@ -45,7 +45,7 @@
     <div class="col-9 form-group">
       <label for="mot_de_passe">Mot de passe</label>
       <div class="form-inline">
-        <input type="text" class="form-control" id="mot_de_passe" [(ngModel)]="user.mot_de_passe" name="mot_de_passe" #mot_de_passe="ngModel" [ngClass]="{'is-invalid': errorPass}">
+        <input type="password" class="form-control" id="mot_de_passe" [(ngModel)]="user.mot_de_passe" name="mot_de_passe" #mot_de_passe="ngModel" [ngClass]="{'is-invalid': errorPass}">
         <img (mouseover)="infoPassText=true" (mouseout)="infoPassText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
         <span *ngIf="infoPassText">Tous charactères sauf espaces</span>
       </div>
@@ -53,7 +53,7 @@
     </div>
 
     <div class="form-group ml-3 mt-3">
-      <button type="button" class="btn btn-primary mr-3" (click)="update()">Enregistrer</button>
+      <button type="submit" class="btn btn-primary mr-3">Enregistrer</button>
       <button type="button" class="btn btn-primary mr-3" (click)="delete()">Supprimer</button>
       <button type="button" class="btn btn-primary mr-3" [routerLink]="['/user']">Annuler</button>
     </div>
@@ -62,7 +62,7 @@
 
 <!-- Ajouter -->
 <div *ngIf="updateShow != true">
-  <form class="mx-3 mt-4">
+  <form (ngSubmit)="addUser()" class="mx-3 mt-4">
     <div class="col-9 form-group">
       <label for="utilisateurIns">Utilisateur</label>
       <div class="form-inline">
@@ -75,7 +75,7 @@
     <div class="col-9 form-group">
       <label for="mot_de_passeIns">Mot de passe</label>
       <div class="form-inline">
-        <input type="text" class="form-control" id="mot_de_passeIns" [(ngModel)]="mot_de_passeIns" name="mot_de_passeIns" [ngClass]="{'is-invalid': errorPass}" >
+        <input type="password" class="form-control" id="mot_de_passeIns" [(ngModel)]="mot_de_passeIns" name="mot_de_passeIns" [ngClass]="{'is-invalid': errorPass}" >
         <img (mouseover)="infoPassText=true" (mouseout)="infoPassText=false" src="https://image.flaticon.com/icons/png/512/3/3716.png" height="20" width="20">
         <span *ngIf="infoPassText">Tous charactères sauf espaces</span>
       </div>
@@ -83,7 +83,7 @@
     </div>
 
     <div class="form-group ml-3 mt-3">
-      <button type="button" class="btn btn-primary mr-3" (click)="addUser()">Ajouter</button>
+      <button type="submit" class="btn btn-primary mr-3">Ajouter</button>
       <button type="button" class="btn btn-primary mr-3" [routerLink]="['/user']">Annuler</button>
     </div>
   </form>
