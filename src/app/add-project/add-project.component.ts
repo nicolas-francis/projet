@@ -68,16 +68,9 @@ export class AddProjectComponent implements OnInit {
   public verifNumber: number;
   public idProjet: number;
 
-  //variables pour avoir les bons format dans chaque champs
-  //un regex par champ pour plus de flexibilité si les champs change de règle plus tard
+  //variables pour avoir le bon format
   public errorNoProjet: boolean = false;
   public noProjetReg = new RegExp('[A-Z]{2}-[0-9]{3}$');
-  public errorPrioriteServ: boolean = false;
-  public prioServReg = new RegExp('^-[0-9]');
-  public errorPTI: boolean = false;
-  public PTIReg = new RegExp('^-[0-9]');
-  public errorNoFinancement: boolean = false;
-  public NoFinancementReg = new RegExp('^-[0-9]');
 
   constructor(
     private ServiceService: ServiceService, 
@@ -223,33 +216,9 @@ export class AddProjectComponent implements OnInit {
     else {
       this.errorNoProjet = true;
     }
-
-    //validation pour la priorité de service
-    if (this.prioServReg.test(this.priorite_serviceIns) != true) {
-      this.errorPrioriteServ = false;
-    }
-    else {
-      this.errorPrioriteServ = true;
-    }
-
-    //validation pour le PTI
-    if (this.PTIReg.test(this.no_ptiIns) != true) {
-      this.errorPTI = false;
-    }
-    else {
-      this.errorPTI = true;
-    }
-
-    //validation pour le numéro de financement
-    if (this.NoFinancementReg.test(this.no_financementIns) != true) {
-      this.errorNoFinancement = false;
-    }
-    else {
-      this.errorNoFinancement = true;
-    }
     
     //enregistrement dans la BD si les conditions plus haut sont OK
-    if (this.errorNoProjet == false && this.errorPrioriteServ == false && this.errorPTI == false && this.errorNoFinancement == false) {
+    if (this.errorNoProjet == false) {
       this.save();
     }
   }
@@ -261,7 +230,9 @@ export class AddProjectComponent implements OnInit {
     this.ProjetService.addProjet(this.projet)
         .subscribe();
 
-    window.location.href = "/home";
+    window.setTimeout(function() {
+      window.location.href = "/home";
+    }, 500);
   }
 
   //Supprimer
@@ -272,10 +243,11 @@ export class AddProjectComponent implements OnInit {
 
       this.ProjetService.deleteProjet(this.projet)
         .subscribe();
-
-      window.location.href = "/home";
+      
+      window.setTimeout(function() {
+        window.location.href = "/home";
+      }, 500);
     }
-    
   }
 
   //modifier
@@ -289,36 +261,16 @@ export class AddProjectComponent implements OnInit {
       this.errorNoProjet = true;
     }
 
-    //validation pour la priorité de service
-    if (this.prioServReg.test(this.projet.priorite_service) != true) {
-      this.errorPrioriteServ = false;
-    }
-    else {
-      this.errorPrioriteServ = true;
-    }
-
-    //validation pour le PTI
-    if (this.PTIReg.test(this.projet.no_pti) != true) {
-      this.errorPTI = false;
-    }
-    else {
-      this.errorPTI = true;
-    }
-
-    //validation pour le numéro de financement
-    if (this.NoFinancementReg.test(this.projet.no_financement) != true) {
-      this.errorNoFinancement = false;
-    }
-    else {
-      this.errorNoFinancement = true;
-    }
-
     //enregistrer les données dans la table
-    if (this.errorNoProjet == false && this.errorPrioriteServ == false && this.errorPTI == false && this.errorNoFinancement == false) {
+    if (this.errorNoProjet == false) {
+      console.log(this.projet);
+
       this.ProjetService.updateProjet(this.projet)
         .subscribe();
 
-      window.location.href = "/home";
+      window.setTimeout(function() {
+        window.location.href = "/home";
+      }, 500);
     }
   }
 

@@ -80,10 +80,14 @@ export class AddUtilisateurComponent implements OnInit {
   //lier avec la fonction addUser() plus haut
   private save(): void {
     console.log(this.user);
+    
     this.userService.addUser(this.user)
         .subscribe();
-
-    window.location.href = "/user";
+    
+    window.setTimeout(function() {
+      window.location.href = "/user";
+    }, 500);
+    
   }
 
   //Supprimer
@@ -95,7 +99,9 @@ export class AddUtilisateurComponent implements OnInit {
       this.userService.deleteUser(this.user)
           .subscribe();
 
-      window.location.href = "/user";
+      window.setTimeout(function() {
+        window.location.href = "/user";
+      }, 500);
     }
   }
 
@@ -123,7 +129,9 @@ export class AddUtilisateurComponent implements OnInit {
       this.userService.updateUser(this.user)
         .subscribe();
 
-      window.location.href = "/user";
+      window.setTimeout(function() {
+        window.location.href = "/user";
+      }, 500);
     }
 
   }
