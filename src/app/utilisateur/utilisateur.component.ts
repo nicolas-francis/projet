@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../class/user';
 import { UserService } from '../service/user.service';
 import { NavbarService } from '../service/navbar.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-utilisateur',
@@ -13,7 +14,7 @@ import { NavbarService } from '../service/navbar.service';
 export class UtilisateurComponent implements OnInit {
   users: User[];
 
-  constructor(private userService: UserService, private router: Router, public nav: NavbarService) { }
+  constructor(private userService: UserService, private router: Router, public nav: NavbarService, public auth: AuthService) { }
 
   ngOnInit() {
     this.nav.show();

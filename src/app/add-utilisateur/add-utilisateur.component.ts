@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from '../class/user';
 import { UserService } from '../service/user.service';
 import { NavbarService } from '../service/navbar.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-add-utilisateur',
@@ -30,7 +31,7 @@ export class AddUtilisateurComponent implements OnInit {
   public utilisateurIns: string;
   public mot_de_passeIns: string;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, public nav: NavbarService) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, public nav: NavbarService, public auth: AuthService) { }
 
   ngOnInit() {
     this.nav.show();

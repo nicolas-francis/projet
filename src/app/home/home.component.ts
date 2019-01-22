@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Projet } from '../class/projet';
 import { ProjetService } from '../service/projet.service';
 import { NavbarService } from '../service/navbar.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ import { NavbarService } from '../service/navbar.service';
 export class HomeComponent implements OnInit {
   projets: Projet[];
 
-  constructor(private projetService: ProjetService, public nav: NavbarService) { }
+  constructor(private projetService: ProjetService, public nav: NavbarService, public auth: AuthService) { }
 
   ngOnInit(): void {
     this.getProjets();

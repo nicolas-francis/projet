@@ -10,6 +10,8 @@ import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthGuard } from './guard/auth.guard';
+import { AuthService } from './service/auth.service';
 
 import { HomeComponent } from './home/home.component';
 import { AddProjectComponent } from './add-project/add-project.component';
@@ -38,7 +40,10 @@ import { AddUtilisateurComponent } from './add-utilisateur/add-utilisateur.compo
     InputTextModule,
     DropdownModule
   ],
-  providers: [],
+  providers: [
+    AuthService, 
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

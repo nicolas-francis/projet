@@ -19,6 +19,7 @@ import { StatutService } from '../service/statut.service';
 import { Projet } from '../class/projet';
 import { ProjetService } from '../service/projet.service';
 import { NavbarService } from '../service/navbar.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-add-project',
@@ -83,7 +84,8 @@ export class AddProjectComponent implements OnInit {
     private ProjetService: ProjetService,
     private route: ActivatedRoute,
     private http: HttpClient,
-    public nav: NavbarService
+    public nav: NavbarService,
+    public auth: AuthService
     ) { }
 
   ngOnInit(): void {

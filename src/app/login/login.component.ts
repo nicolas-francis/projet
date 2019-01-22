@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../service/auth.service';
 import { User } from '../class/user';
 import { UserService } from '../service/user.service';
 import { timer } from 'rxjs';
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   public erreur: string;
   public time: number;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
   public submit() {
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i].utilisateur == this.utilisateur && this.users[i].mot_de_passe == this.mot_de_passe) {
+        this.auth.sendToken(this.utilisateur);
         this.router.navigate(['home']);
       }
       else {
