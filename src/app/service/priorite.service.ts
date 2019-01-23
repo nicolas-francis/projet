@@ -12,11 +12,12 @@ const httpOptions = {
 })
 
 export class PrioriteService {
-  private prioritesUrl = 'http://localhost:8080/api/priorites';  //URL to web api
+  private prioritesUrl = 'http://localhost:8080/api/priorites';  
   constructor( 
     private http: HttpClient
   ) { }
 
+  // Avoir les priorités
   getPriorites (): Observable<Priorite[]> {
     return this.http.get<Priorite[]>(this.prioritesUrl)
   }

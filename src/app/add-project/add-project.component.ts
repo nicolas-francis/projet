@@ -27,7 +27,7 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./add-project.component.css']
 })
 export class AddProjectComponent implements OnInit {
-  //array des tables de la BD pour les combobox
+  // Array des tables de la BD pour les combobox
   services: Service[];
   sources: Source[];
   priorites: Priorite[];
@@ -36,10 +36,10 @@ export class AddProjectComponent implements OnInit {
   phases: Phase[];
   statuts: Statut[];
 
-  //seulement 1 projet (pour l'ajout et la suppression)
+  // Seulement 1 projet (pour l'ajout et la suppression)
   projet = new Projet;
 
-  //champs pour l'ajout
+  // Champs pour l'ajout (vérifier pour une meilleure façon)
   public no_projetIns: string;
   public desc_projetIns: string;
   public indicateur_strategiqueIns: string;
@@ -63,15 +63,15 @@ export class AddProjectComponent implements OnInit {
   public suivi_parIns: string;
   public date_echeance_reviseeIns: Date;
 
-  //pour faire afficher le formulaire update ou insert
+  // Pour faire afficher le formulaire update ou insert
   public endUrl: string;
   public updateShow: boolean = false;
   public verifNumber: number;
   public idProjet: number;
 
-  //variables pour avoir le bon format
+  // Variables pour avoir le bon format
   public errorNoProjet: boolean = false;
-  public noProjetReg = new RegExp('[A-Z]{2}-[0-9]{3}$');
+  public noProjetReg = new RegExp('^[A-Z]{2}-[0-9]{3}$');
 
   constructor(
     private ServiceService: ServiceService, 
@@ -91,6 +91,7 @@ export class AddProjectComponent implements OnInit {
   ngOnInit(): void {
     this.nav.show();
 
+    // Pour vérifier quel formulaire afficher
     this.endUrl = window.location.href;
     this.endUrl = this.endUrl.substr(window.location.href.lastIndexOf('/') + 1);
     this.verifNumber = +this.endUrl;
@@ -103,6 +104,7 @@ export class AddProjectComponent implements OnInit {
           .subscribe(projet => this.projet = projet);
     }
 
+    // Appel pour remplire les combobox au init
     this.getServices();
     this.getSources();
     this.getPriorites();
@@ -112,7 +114,7 @@ export class AddProjectComponent implements OnInit {
     this.getStatuts();
   }
 
-  //Remplir les combobox avec les infos de la BD
+  // Remplir les combobox avec les infos de la BD
   getServices() {
     return this.ServiceService.getServices()
                 .subscribe(
@@ -184,9 +186,10 @@ export class AddProjectComponent implements OnInit {
   }
 
 
-  //Opérations sur la table
-  //lis les champs du form avec les champs de la BD
+  // Opérations sur la table projet
+  // Ajouter un projet
   addProjet() {
+    // Entre les textbox dans le tableau d'un projet pour entrer le tableau dans la BD ensuite (vérifier pour une meilleure façon)
     this.projet.no_projet = this.no_projetIns;
     this.projet.desc_projet = this.desc_projetIns;
     this.projet.indicateur_strategique = this.indicateur_strategiqueIns;
@@ -210,8 +213,7 @@ export class AddProjectComponent implements OnInit {
     this.projet.suivi_par = this.suivi_parIns;
     this.projet.date_echeance_revisee = this.date_echeance_reviseeIns;
 
-    //VALIDATION
-    //validation pour le numéro du projet
+    // Validation pour le numéro du projet
     if (this.noProjetReg.test(this.no_projetIns) == true && this.no_projetIns != null && this.no_projetIns != " ") {
       this.errorNoProjet = false;
     }
@@ -219,26 +221,28 @@ export class AddProjectComponent implements OnInit {
       this.errorNoProjet = true;
     }
     
-    //enregistrement dans la BD si les conditions plus haut sont OK
+    // Enregistrement dans la BD si les conditions plus haut sont OK
     if (this.errorNoProjet == false) {
       this.save();
     }
   }
 
-  //enregistrer les données dans la table
-  //lier avec la fonction addProjet() plus haut
+  // Enregistrer les données dans la table
+  // Possiblement la mettre dans une fonction addProjet() si nous ne pouvons pas la réutiliser
   private save(): void {
     console.log(this.projet);
     this.ProjetService.addProjet(this.projet)
         .subscribe();
 
+    // Timer avant de faire la redirection pour FF (FF traite trop vite ???)
     window.setTimeout(function() {
       window.location.href = "/home";
     }, 500);
   }
 
-  //Supprimer
+  // Supprimer un projet
   delete(): void {
+    // Confirmation avant de faire la suppression pour être certain
     if (confirm("Voulez-vous supprimer le projet?")) {
       this.idProjet = +this.endUrl;
       console.log(this.projet);
@@ -246,16 +250,16 @@ export class AddProjectComponent implements OnInit {
       this.ProjetService.deleteProjet(this.projet)
         .subscribe();
       
+      // Timer avant de faire la redirection pour FF (FF traite trop vite ???)
       window.setTimeout(function() {
         window.location.href = "/home";
       }, 500);
     }
   }
 
-  //modifier
+  // Modifier un projet
   update(): void {
-    //VALIDATION
-    //validation pour le numéro du projet
+    // Validation pour le numéro du projet
     if (this.noProjetReg.test(this.projet.no_projet) == true && this.projet.no_projet != null && this.projet.no_projet != " ") {
       this.errorNoProjet = false;
     }
@@ -263,13 +267,14 @@ export class AddProjectComponent implements OnInit {
       this.errorNoProjet = true;
     }
 
-    //enregistrer les données dans la table
+    // Enregistrer les données dans la table
     if (this.errorNoProjet == false) {
       console.log(this.projet);
 
       this.ProjetService.updateProjet(this.projet)
         .subscribe();
 
+      // Timer avant de faire la redirection pour FF (FF traite trop vite ???)
       window.setTimeout(function() {
         window.location.href = "/home";
       }, 500);

@@ -1,3 +1,4 @@
+// Défini les champs et la table à aller chercher dans la BD
 module.exports = (sequelize, Sequelize) => {
 	const Projet = sequelize.define('pr_projets2', {
 	  no_projet: {
@@ -67,6 +68,5 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.DATE
 		}
 	});
-	
 	return Projet;
 }

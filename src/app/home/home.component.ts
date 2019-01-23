@@ -12,16 +12,21 @@ import { AuthService } from '../service/auth.service';
 })
 
 export class HomeComponent implements OnInit {
+  // Array avec tous les projets de la BD
   projets: Projet[];
 
-  constructor(private projetService: ProjetService, public nav: NavbarService, public auth: AuthService) { }
+  constructor(
+    private projetService: ProjetService,
+    public nav: NavbarService, 
+    public auth: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.getProjets();
     this.nav.show();
   }
   
-  //Avoir tous les projets
+  // Avoir tous les projets
   getProjets() {
     return this.projetService.getProjets()
                 .subscribe(

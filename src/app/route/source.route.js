@@ -1,6 +1,7 @@
+// Créer l'api pour les sources
 module.exports = function(app) {
     const sources = require('../controller/source.controller.js');
 
-    // Retrieve all sources
+    // Avoir toutes les sources
     app.get('/api/sources', sources.findAll);
 }

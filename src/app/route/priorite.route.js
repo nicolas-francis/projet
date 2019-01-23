@@ -1,6 +1,7 @@
+// Créer l'api pour les priorités
 module.exports = function(app) {
     const priorites = require('../controller/priorite.controller.js');
 
-    // Retrieve all priorites
+    // Avoir toutes les priorités
     app.get('/api/priorites', priorites.findAll);
 }

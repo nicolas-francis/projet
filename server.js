@@ -13,7 +13,7 @@ app.use(cors(corsOptions));
  
 const db = require('./src/app/config/db.config.js');
  
-//tables
+// Fichiers requis pour accéder aux tables de la BD
 require('./src/app/route/projet.route.js')(app);
 require('./src/app/route/user.route.js')(app);
 require('./src/app/route/service.route.js')(app);
@@ -24,7 +24,7 @@ require('./src/app/route/orientation.route.js')(app);
 require('./src/app/route/phase.route.js')(app);
 require('./src/app/route/statut.route.js')(app);
  
-//Create a Server
+// Créer le serveur sur le port 8080
 var server = app.listen(8080, function () {
   let port = server.address().port;
  

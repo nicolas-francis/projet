@@ -1,7 +1,7 @@
 const db = require('../config/db.config.js');
 const User = db.users;
  
-//GET All
+// FETCH All
 exports.findAll = (req, res) => {
 	User.findAll().then(users => {
 			res.json(users.sort(function(c1, c2){return c1.id - c2.id}));
@@ -11,8 +11,8 @@ exports.findAll = (req, res) => {
 		});
 };
 
-//FIND USERNAME
-//tester avec "req.params.id" à la place de "req.params.username"
+// FIND USERNAME
+// seulement utiliser findById ???
 exports.findUser = (req, res) => {
 	User.findUser(req.params.username).then(user => {
 		res.json(user);
@@ -22,7 +22,7 @@ exports.findUser = (req, res) => {
 	});
 };
 
-//FIND USER BY ID
+// FIND USER BY ID
 exports.findById = (req, res) => {	
 	User.findById(req.params.id).then(user => {
 			res.json(user);
@@ -32,7 +32,7 @@ exports.findById = (req, res) => {
 		});
 };
 
-//INSERT USER
+// INSERT USER
 exports.create = (req, res) => {
 	User.create({
 				"utilisateur": req.body.utilisateur, 
@@ -45,7 +45,7 @@ exports.create = (req, res) => {
 		});
 };
 
-//UPDATE USER
+// UPDATE USER
 exports.update = (req, res) => {
 	const id = req.body.id;
 	User.update(req.body, 
@@ -57,7 +57,7 @@ exports.update = (req, res) => {
 			});
 };
 
-//DELETE USER
+// DELETE USER
 exports.delete = (req, res) => {
 	const id = req.params.id;
 	User.destroy({

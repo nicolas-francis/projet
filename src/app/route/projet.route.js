@@ -1,18 +1,19 @@
+// Créer l'api pour les projets
 module.exports = function(app) {
     const projets = require('../controller/projet.controller.js');
     
-    // Retrieve all projects
+    // Avoir tous les projets
     app.get('/api/projets', projets.findAll);
 
-    // Create a new project
+    // Créer un nouveau projet
     app.post('/api/projets', projets.create);
 
-    // Delete a project with Id
+    // Supprimer un projet avec l'id
     app.delete('/api/projets/:id', projets.delete);
 
-    // Retrieve a single Project by Id
+    // Avoir un seul projet avec l'id
     app.get('/api/projets/:id', projets.findById);
 
-    // Update a Project with Id
+    // Modifier un projet avec l'id
     app.put('/api/projets', projets.update);
 }

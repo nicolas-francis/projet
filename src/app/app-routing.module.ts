@@ -8,6 +8,7 @@ import { LoginComponent } from "./login/login.component";
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { AddUtilisateurComponent } from './add-utilisateur/add-utilisateur.component';
 
+// Toutes les routes de l'application
 const routes: Routes = [
   {
     path: '',
@@ -15,8 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
-    ,canActivate: [AuthGuard]
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'add',
@@ -31,7 +32,7 @@ const routes: Routes = [
   {
     path: 'useradd',
     component: AddUtilisateurComponent,
-   canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'useradd/:id',

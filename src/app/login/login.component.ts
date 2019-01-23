@@ -11,6 +11,7 @@ import { timer } from 'rxjs';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  // Array pour avoir tous les users de la BD
   users: User[];
   
   public utilisateur: string;
@@ -18,7 +19,11 @@ export class LoginComponent implements OnInit {
   public erreur: string;
   public time: number;
 
-  constructor(private userService: UserService, private router: Router, private auth: AuthService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router, 
+    private auth: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -34,10 +39,12 @@ export class LoginComponent implements OnInit {
                 );
   }
 
-  //login
+  // Login
   public submit() {
+    // Loop dans tous les utilisateurs jusqu'a temps qu'il y ait un match avec les champs entrés par l'utilisateur
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i].utilisateur == this.utilisateur && this.users[i].mot_de_passe == this.mot_de_passe) {
+        // Donne un JWT à l'utyilisateur
         this.auth.sendToken(this.utilisateur);
         this.router.navigate(['home']);
       }
@@ -50,7 +57,7 @@ export class LoginComponent implements OnInit {
     this.mot_de_passe = "";
   }
 
-  //Timer
+  // Timer pour enlever les messages d'erreur après 5 secondes
   startTimer() {
     const source = timer(5000);
     const subscribe = source.subscribe(

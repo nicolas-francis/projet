@@ -12,13 +12,18 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./utilisateur.component.css']
 })
 export class UtilisateurComponent implements OnInit {
+  // Array avec tous les utilisateurs de la BD
   users: User[];
 
-  constructor(private userService: UserService, private router: Router, public nav: NavbarService, public auth: AuthService) { }
+  constructor(
+    private userService: UserService, 
+    private router: Router, 
+    public nav: NavbarService, 
+    public auth: AuthService
+  ) { }
 
   ngOnInit() {
     this.nav.show();
-
     this.getUsers();
   }
 
@@ -31,5 +36,4 @@ export class UtilisateurComponent implements OnInit {
                   }
                 );
   }
-
 }

@@ -12,11 +12,12 @@ const httpOptions = {
 })
 
 export class SourceService {
-  private sourcesUrl = 'http://localhost:8080/api/sources';  //URL to web api
+  private sourcesUrl = 'http://localhost:8080/api/sources';  
   constructor( 
     private http: HttpClient
   ) { }
 
+  // Avoir les sources
   getSources (): Observable<Source[]> {
     return this.http.get<Source[]>(this.sourcesUrl)
   }

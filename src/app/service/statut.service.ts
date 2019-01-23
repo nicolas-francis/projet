@@ -12,11 +12,12 @@ const httpOptions = {
 })
 
 export class StatutService {
-  private statutsUrl = 'http://localhost:8080/api/statuts';  //URL to web api
+  private statutsUrl = 'http://localhost:8080/api/statuts';  
   constructor( 
     private http: HttpClient
   ) { }
 
+  // Avoir les status
   getStatuts (): Observable<Statut[]> {
     return this.http.get<Statut[]>(this.statutsUrl)
   }

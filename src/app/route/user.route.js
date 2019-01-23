@@ -1,18 +1,19 @@
+// Créer l'api pour les utilisateurs
 module.exports = function(app) {
     const users = require('../controller/user.controller.js');
 
-    // Retrieve all users
+    // Avoir tous les utilisateur
     app.get('/api/users', users.findAll);
 
-    // Retrieve a single User by Id
+    // Avoir un seul utilisateur avec l'id
     app.get('/api/users/:id', users.findById);
 
-    // Create a new user
+    // Créer un nouvel utilisateur
     app.post('/api/users', users.create);
 
-    // Update a user with Id
+    // Modifier un utilisateur
     app.put('/api/users', users.update);
 
-    // Delete a user with Id
+    // Supprimer un utilisateur avec l'id
     app.delete('/api/users/:id', users.delete);
 }

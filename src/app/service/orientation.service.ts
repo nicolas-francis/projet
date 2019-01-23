@@ -12,11 +12,12 @@ const httpOptions = {
 })
 
 export class OrientationService {
-  private orientationsUrl = 'http://localhost:8080/api/orientations';  //URL to web api
+  private orientationsUrl = 'http://localhost:8080/api/orientations';
   constructor( 
     private http: HttpClient
   ) { }
 
+  // Avoir les orientations
   getOrientations (): Observable<Orientation[]> {
     return this.http.get<Orientation[]>(this.orientationsUrl)
   }

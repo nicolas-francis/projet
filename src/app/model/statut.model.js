@@ -1,3 +1,4 @@
+// Défini les champs et la table à aller chercher dans la BD
 module.exports = (sequelize, Sequelize) => {
 	const Statut = sequelize.define('pr_statuts', {
 	  statut: {
@@ -10,6 +11,5 @@ module.exports = (sequelize, Sequelize) => {
 			type: Sequelize.INTEGER
 		}
 	});
-	
 	return Statut;
 }

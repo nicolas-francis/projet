@@ -12,11 +12,12 @@ const httpOptions = {
 })
 
 export class SchemaService {
-  private schemasUrl = 'http://localhost:8080/api/schemas';  //URL to web api
+  private schemasUrl = 'http://localhost:8080/api/schemas'; 
   constructor( 
     private http: HttpClient
   ) { }
 
+  // Avoir les schémas
   getSchemas (): Observable<Schema[]> {
     return this.http.get<Schema[]>(this.schemasUrl)
   }

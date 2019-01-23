@@ -12,11 +12,12 @@ const httpOptions = {
 })
 
 export class PhaseService {
-  private phasesUrl = 'http://localhost:8080/api/phases';  //URL to web api
+  private phasesUrl = 'http://localhost:8080/api/phases';
   constructor( 
     private http: HttpClient
   ) { }
 
+  // Avoir les phases
   getPhases (): Observable<Phase[]> {
     return this.http.get<Phase[]>(this.phasesUrl)
   }

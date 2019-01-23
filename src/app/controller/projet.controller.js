@@ -1,7 +1,7 @@
 const db = require('../config/db.config.js');
 const Projet = db.projets;
  
-//FETCH All PROJECTS
+// FETCH All PROJECTS
 exports.findAll = (req, res) => {
 	Projet.findAll().then(projets => {
 			res.json(projets.sort(function(c1, c2){return c1.id - c2.id}));
@@ -11,7 +11,7 @@ exports.findAll = (req, res) => {
 		});
 };
 
-//INSERT PROJECT
+// INSERT PROJECT
 exports.create = (req, res) => {
 	Projet.create({
 				"no_projet": req.body.no_projet,
@@ -44,7 +44,7 @@ exports.create = (req, res) => {
 		});
 };
 
-//DELETE PROJECT
+// DELETE PROJECT
 exports.delete = (req, res) => {
 	const id = req.params.id;
 	Projet.destroy({
@@ -56,7 +56,7 @@ exports.delete = (req, res) => {
 		});
 };
 
-//FIND PROJECT BY ID
+// FIND PROJECT BY ID
 exports.findById = (req, res) => {	
 	Projet.findById(req.params.id).then(projet => {
 			res.json(projet);
@@ -66,7 +66,7 @@ exports.findById = (req, res) => {
 		});
 };
 
-//UPDATE A PROJECT
+// UPDATE A PROJECT
 exports.update = (req, res) => {
 	const id = req.body.id;
 	Projet.update( req.body, 

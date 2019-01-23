@@ -6,17 +6,21 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private auth: AuthService, private myRoute: Router){ }
+  constructor(
+    private auth: AuthService,
+    private myRoute: Router
+  ){ }
   
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if(this.auth.isLoggednIn()) {
-      return true;
-    }
-    else {
-      this.myRoute.navigate(["/"]);
-      return false;
-    }
+      // Si l'utilisateur est logged accepter la route sinon, le renvoyer au root du site
+      if(this.auth.isLoggednIn()) {
+        return true;
+      }
+      else {
+        this.myRoute.navigate(["/"]);
+        return false;
+      }
   }
 }
