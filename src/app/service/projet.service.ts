@@ -34,9 +34,8 @@ export class ProjetService {
   }
 
   // Supprimer un projet avec l'id
-  // Changer "user: Projet" pour "projet: Projet"
-  deleteProjet (user: Projet | number): Observable<Projet> {
-    const id = typeof user === 'number' ? user : user.id;
+  deleteProjet (projet: Projet | number): Observable<Projet> {
+    const id = typeof projet === 'number' ? projet : projet.id;
     const url = `${this.projetsUrl}/${id}`;
 
     return this.http.delete<Projet>(url, httpOptions);
